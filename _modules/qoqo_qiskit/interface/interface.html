@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.interface.interface &mdash; qoqo_qiskit 0.1.1 documentation</title>
+  <title>qoqo_qiskit.interface.interface &mdash; qoqo_qiskit 0.1.3 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -31,7 +31,7 @@
             qoqo_qiskit
           </a>
               <div class="version">
-                0.1.1
+                0.1.3
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -104,11 +104,17 @@
 <span class="sd">    Returns:</span>
 <span class="sd">        Tuple[QuantumCircuit, Dict[str, int]]: the equivalent QuantumCircuit and the dict</span>
 <span class="sd">                                            containing info for Qiskit&#39;s backend.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: the circuit contains a symbolic PragmaLoop operation.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># Populating dict output. Currently handling:</span>
     <span class="c1">#   - PragmaSetStateVector (continues further down)</span>
+    <span class="c1">#   - PragmaGetStateVector</span>
+    <span class="c1">#   - PragmaGetDensityMatrix</span>
     <span class="c1">#   - PragmaSetNumberOfMeasurement</span>
     <span class="c1">#   - PragmaRepeatedMeasurement</span>
+    <span class="c1">#   - PragmaLoop</span>
     <span class="c1">#   - MeasureQubit</span>
     <span class="n">filtered_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
     <span class="n">circuit_info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
@@ -144,6 +150,12 @@
             <span class="n">circuit_info</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaGetStateVector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">elif</span> <span class="s2">&quot;PragmaGetDensityMatrix&quot;</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">tags</span><span class="p">():</span>
             <span class="n">circuit_info</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaGetDensityMatrix&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">elif</span> <span class="s2">&quot;PragmaLoop&quot;</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">tags</span><span class="p">():</span>
+            <span class="k">if</span> <span class="n">op</span><span class="o">.</span><span class="n">repetitions</span><span class="p">()</span><span class="o">.</span><span class="n">is_float</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">op</span><span class="o">.</span><span class="n">repetitions</span><span class="p">()</span><span class="o">.</span><span class="n">float</span><span class="p">())):</span>
+                    <span class="n">filtered_circuit</span> <span class="o">+=</span> <span class="n">op</span><span class="o">.</span><span class="n">circuit</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A symbolic PragmaLoop operation is not supported.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">filtered_circuit</span> <span class="o">+=</span> <span class="n">op</span>
 
@@ -151,9 +163,11 @@
     <span class="n">qasm_backend</span> <span class="o">=</span> <span class="n">QasmBackend</span><span class="p">(</span><span class="n">qubit_register_name</span><span class="o">=</span><span class="n">qubit_register_name</span><span class="p">)</span>
     <span class="n">input_qasm_str</span> <span class="o">=</span> <span class="n">qasm_backend</span><span class="o">.</span><span class="n">circuit_to_qasm_str</span><span class="p">(</span><span class="n">filtered_circuit</span><span class="p">)</span>
 
-    <span class="c1"># Handling PragmaSetStateVector + QASM -&gt; Qiskit transformation</span>
+    <span class="c1"># QASM -&gt; Qiskit transformation</span>
     <span class="n">return_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span>
     <span class="n">from_qasm_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">from_qasm_str</span><span class="p">(</span><span class="n">input_qasm_str</span><span class="p">)</span>
+
+    <span class="c1"># Handling PragmaSetStateVector</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_statevector</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">qregs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">qreg</span> <span class="ow">in</span> <span class="n">from_qasm_circuit</span><span class="o">.</span><span class="n">qregs</span><span class="p">:</span>
