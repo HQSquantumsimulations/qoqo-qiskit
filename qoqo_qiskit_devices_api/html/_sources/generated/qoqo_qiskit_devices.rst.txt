@@ -1,0 +1,29 @@
+﻿qoqo\_qiskit\_devices
+=====================
+
+.. automodule:: qoqo_qiskit_devices
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      set_qiskit_noise_information
+   
+   
+
+   
+   
+   
+
+   
+   
+   
+
+
+

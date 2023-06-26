@@ -1,0 +1,36 @@
+qoqo\_qiskit\_devices.devices
+=============================
+
+.. automodule:: qoqo_qiskit_devices.devices
+
+   
+   
+   
+
+   
+   
+   
+
+   
+   
+   .. rubric:: Classes
+
+   .. autosummary::
+   
+      IBMBelemDevice
+      IBMJakartaDevice
+      IBMLagosDevice
+      IBMLimaDevice
+      IBMManilaDevice
+      IBMNairobiDevice
+      IBMPerthDevice
+      IBMQuitoDevice
+   
+   
+
+   
+   
+   
+
+
+
