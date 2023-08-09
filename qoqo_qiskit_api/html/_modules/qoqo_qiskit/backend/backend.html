@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.1.5 documentation</title>
+  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.1.6 documentation</title>
       <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
             qoqo_qiskit
           </a>
               <div class="version">
-                0.1.5
+                0.1.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -99,13 +99,16 @@
 <div class="viewcode-block" id="QoqoQiskitBackend"><a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend">[docs]</a><span class="k">class</span> <span class="nc">QoqoQiskitBackend</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Simulate a Qoqo QuantumProgram on a Qiskit backend.&quot;&quot;&quot;</span>
 
-<div class="viewcode-block" id="QoqoQiskitBackend.__init__"><a class="viewcode-back" href="../../../generated/generated/qoqo_qiskit.QoqoQiskitBackend.html#qoqo_qiskit.QoqoQiskitBackend.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">qiskit_backend</span><span class="p">:</span> <span class="n">Backend</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<div class="viewcode-block" id="QoqoQiskitBackend.__init__"><a class="viewcode-back" href="../../../generated/generated/qoqo_qiskit.QoqoQiskitBackend.html#qoqo_qiskit.QoqoQiskitBackend.__init__">[docs]</a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">qiskit_backend</span><span class="p">:</span> <span class="n">Backend</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">compilation</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Init for Qiskit backend settings.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            qiskit_backend (Backend): Qiskit backend instance to use for the simulation.</span>
 <span class="sd">            memory (bool): Whether the output will return the actual single shots instead</span>
 <span class="sd">                           of an equivalent sequence taken from a result summary.</span>
+<span class="sd">            compilation (bool): Whether the qiskit `compiler` should be used instead of `run`.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            TypeError: the input is not a valid Qiskit Backend instance.</span>
@@ -116,7 +119,8 @@
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The input is not a valid Qiskit Backend instance.&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">qiskit_backend</span> <span class="o">=</span> <span class="n">qiskit_backend</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span> <span class="o">=</span> <span class="n">memory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">compilation</span> <span class="o">=</span> <span class="n">compilation</span></div>
 
 <div class="viewcode-block" id="QoqoQiskitBackend.run_circuit"><a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend.run_circuit">[docs]</a>    <span class="k">def</span> <span class="nf">run_circuit</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span>
@@ -151,8 +155,23 @@
             <span class="n">output_complex_register_dict</span><span class="p">,</span>
         <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_setup_registers</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">defs</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">definitions</span><span class="p">()</span>
+            <span class="n">doubles</span> <span class="o">=</span> <span class="p">[</span><span class="n">defs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
+            <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">defs</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">op</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">doubles</span><span class="p">:</span>
+                    <span class="n">doubles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+            <span class="n">debugged_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">def_bit</span> <span class="ow">in</span> <span class="n">doubles</span><span class="p">:</span>
+                <span class="n">debugged_circuit</span> <span class="o">+=</span> <span class="n">def_bit</span>
+            <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">circuit</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">op</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">doubles</span><span class="p">:</span>
+                    <span class="n">debugged_circuit</span> <span class="o">+=</span> <span class="n">op</span>
+        <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+            <span class="n">debugged_circuit</span> <span class="o">=</span> <span class="n">circuit</span>
+
         <span class="c1"># Qiskit conversion</span>
-        <span class="n">res</span> <span class="o">=</span> <span class="n">to_qiskit_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+        <span class="n">res</span> <span class="o">=</span> <span class="n">to_qiskit_circuit</span><span class="p">(</span><span class="n">debugged_circuit</span><span class="p">)</span>
         <span class="n">compiled_circuit</span><span class="p">:</span> <span class="n">QuantumCircuit</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">run_options</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
@@ -202,9 +221,12 @@
             <span class="n">shots</span> <span class="o">=</span> <span class="n">custom_shots</span>
 
         <span class="c1"># Simulation</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span>
-            <span class="n">compiled_circuit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qiskit_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">compilation</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="n">execute</span><span class="p">(</span>
+                <span class="n">compiled_circuit</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">qiskit_backend</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span>
+            <span class="p">)</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qiskit_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span>
 
         <span class="c1"># Result transformation</span>
         <span class="p">(</span>

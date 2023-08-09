@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices.devices &mdash; qoqo_qiskit_devices 0.1.5 documentation</title>
+  <title>qoqo_qiskit_devices.devices &mdash; qoqo_qiskit_devices 0.1.6 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -35,7 +35,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.1.5
+                0.1.6
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -64,6 +64,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMBelemDevice.two_qubit_gate_time()</span></code></a></li>
@@ -85,6 +86,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMJakartaDevice.two_qubit_gate_time()</span></code></a></li>
@@ -106,6 +108,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMLagosDevice.two_qubit_gate_time()</span></code></a></li>
@@ -127,6 +130,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMLimaDevice.two_qubit_gate_time()</span></code></a></li>
@@ -148,6 +152,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMManilaDevice.two_qubit_gate_time()</span></code></a></li>
@@ -169,6 +174,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMNairobiDevice.two_qubit_gate_time()</span></code></a></li>
@@ -190,6 +196,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMPerthDevice.two_qubit_gate_time()</span></code></a></li>
@@ -211,6 +218,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.single_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.single_qubit_gate_time()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.three_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.three_qubit_gate_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.to_generic_device"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.to_generic_device()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_edges"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.two_qubit_edges()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_names"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.two_qubit_gate_names()</span></code></a></li>
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.two_qubit_gate_time()</span></code></a></li>
@@ -545,6 +553,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_edges">
 <span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
@@ -867,6 +892,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>PyValueError</strong> -- Qubit is not in device.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1199,6 +1241,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_edges">
 <span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
@@ -1521,6 +1580,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>PyValueError</strong> -- Qubit is not in device.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -1853,6 +1929,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_edges">
 <span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
@@ -2175,6 +2268,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>PyValueError</strong> -- Qubit is not in device.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -2507,6 +2617,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd></dl>
 
 <dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_edges">
 <span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
@@ -2829,6 +2956,23 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 </dd>
 <dt class="field-even">Raises<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>PyValueError</strong> -- Qubit is not in device.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.to_generic_device">
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<dd><p>Convert the device to a qoqo GenericDevice.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>converted device.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>GenericDevice</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>PyValueError</strong> -- Could not convert the device to a qoqo GenericDevice.</p>
 </dd>
 </dl>
 </dd></dl>
