@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.1.6 documentation</title>
+  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.1.7 documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <!--[if lt IE 9]>
@@ -33,7 +33,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.1.6
+                0.1.7
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -137,7 +137,7 @@
 
     <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">number_qubits</span><span class="p">()):</span>
         <span class="n">damping</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t1</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">)</span>
-        <span class="n">dephasing</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t2</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">)</span>
+        <span class="n">dephasing</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t2</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">properties</span><span class="o">.</span><span class="n">t1</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">))</span>
         <span class="n">device</span><span class="o">.</span><span class="n">add_damping</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">,</span> <span class="n">damping</span><span class="o">=</span><span class="n">damping</span><span class="p">)</span>
         <span class="n">device</span><span class="o">.</span><span class="n">add_dephasing</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">,</span> <span class="n">dephasing</span><span class="o">=</span><span class="n">dephasing</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">single_qubit_gate_names</span><span class="p">():</span>
