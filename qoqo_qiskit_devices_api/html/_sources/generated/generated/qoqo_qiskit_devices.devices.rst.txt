@@ -9,6 +9,12 @@ qoqo\_qiskit\_devices.devices
 
    
    
+   .. rubric:: Functions
+
+   .. autosummary::
+   
+      qoqo_qiskit_device_from_ibmq_identifier
+   
    
 
    

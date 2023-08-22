@@ -11,11 +11,11 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=1c37afa4"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -224,6 +224,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_time"><code class="docutils literal notranslate"><span class="pre">IBMQuitoDevice.two_qubit_gate_time()</span></code></a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#qoqo_qiskit_devices.devices.qoqo_qiskit_device_from_ibmq_identifier"><code class="docutils literal notranslate"><span class="pre">qoqo_qiskit_device_from_ibmq_identifier()</span></code></a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../qoqo_qiskit_devices.html#qoqo_qiskit_devices.set_qiskit_noise_information"><code class="docutils literal notranslate"><span class="pre">set_qiskit_noise_information()</span></code></a></li>
@@ -256,9 +257,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-qoqo_qiskit_devices.devices">
-<span id="qoqo-qiskit-devices-devices"></span><h1>qoqo_qiskit_devices.devices<a class="headerlink" href="#module-qoqo_qiskit_devices.devices" title="Permalink to this heading"></a></h1>
-<p>IBM Devices</p>
+  <section id="qoqo-qiskit-devices-devices">
+<h1>qoqo_qiskit_devices.devices<a class="headerlink" href="#qoqo-qiskit-devices-devices" title="Link to this heading"></a></h1>
+<p id="module-qoqo_qiskit_devices.devices">IBM Devices</p>
+<p class="rubric">Functions</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qoqo_qiskit_devices.devices.qoqo_qiskit_device_from_ibmq_identifier" title="qoqo_qiskit_devices.devices.qoqo_qiskit_device_from_ibmq_identifier"><code class="xref py py-obj docutils literal notranslate"><span class="pre">qoqo_qiskit_device_from_ibmq_identifier</span></code></a>(...)</p></td>
+<td><p>Instantiate a new IBMDevice instance based on the given IBM identifier.</p></td>
+</tr>
+</tbody>
+</table>
 <p class="rubric">Classes</p>
 <table class="autosummary longtable docutils align-default">
 <tbody>
@@ -290,16 +299,16 @@
 </table>
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMBelemDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMBelemDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Belem device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -316,7 +325,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -333,7 +342,7 @@
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -351,7 +360,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -370,7 +379,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -385,7 +394,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -408,7 +417,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -422,7 +431,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -436,7 +445,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -453,7 +462,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -471,7 +480,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -490,7 +499,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -504,7 +513,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -527,7 +536,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -554,7 +563,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -571,7 +580,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -594,7 +603,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -608,7 +617,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMBelemDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -634,16 +643,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMJakartaDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMJakartaDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Jakarta device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -660,7 +669,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -677,7 +686,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -695,7 +704,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -714,7 +723,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -729,7 +738,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -752,7 +761,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -766,7 +775,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -780,7 +789,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -797,7 +806,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -815,7 +824,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -834,7 +843,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -848,7 +857,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -871,7 +880,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -898,7 +907,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -915,7 +924,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -938,7 +947,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -952,7 +961,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMJakartaDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -978,16 +987,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMLagosDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMLagosDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Lagos device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1004,7 +1013,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1021,7 +1030,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -1039,7 +1048,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -1058,7 +1067,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -1073,7 +1082,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1096,7 +1105,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1110,7 +1119,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1124,7 +1133,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1141,7 +1150,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1159,7 +1168,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1178,7 +1187,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1192,7 +1201,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1215,7 +1224,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -1242,7 +1251,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1259,7 +1268,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -1282,7 +1291,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1296,7 +1305,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLagosDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1322,16 +1331,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMLimaDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMLimaDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Lima device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1348,7 +1357,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1365,7 +1374,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -1383,7 +1392,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -1402,7 +1411,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -1417,7 +1426,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1440,7 +1449,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1454,7 +1463,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1468,7 +1477,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1485,7 +1494,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1503,7 +1512,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1522,7 +1531,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1536,7 +1545,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1559,7 +1568,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -1586,7 +1595,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1603,7 +1612,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -1626,7 +1635,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1640,7 +1649,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMLimaDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1666,16 +1675,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMManilaDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMManilaDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Manila device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1692,7 +1701,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1709,7 +1718,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -1727,7 +1736,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -1746,7 +1755,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -1761,7 +1770,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1784,7 +1793,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1798,7 +1807,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1812,7 +1821,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1829,7 +1838,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1847,7 +1856,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1866,7 +1875,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1880,7 +1889,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -1903,7 +1912,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -1930,7 +1939,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1947,7 +1956,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -1970,7 +1979,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -1984,7 +1993,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMManilaDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2010,16 +2019,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMNairobiDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMNairobiDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Nairobi device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2036,7 +2045,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2053,7 +2062,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -2071,7 +2080,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -2090,7 +2099,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -2105,7 +2114,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2128,7 +2137,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2142,7 +2151,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2156,7 +2165,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2173,7 +2182,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2191,7 +2200,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2210,7 +2219,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2224,7 +2233,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2247,7 +2256,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -2274,7 +2283,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2291,7 +2300,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -2314,7 +2323,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2328,7 +2337,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMNairobiDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2354,16 +2363,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMPerthDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMPerthDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Perth device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2380,7 +2389,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2397,7 +2406,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -2415,7 +2424,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -2434,7 +2443,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -2449,7 +2458,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2472,7 +2481,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2486,7 +2495,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2500,7 +2509,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2517,7 +2526,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2535,7 +2544,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2554,7 +2563,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2568,7 +2577,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2591,7 +2600,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -2618,7 +2627,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2635,7 +2644,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -2658,7 +2667,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2672,7 +2681,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMPerthDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2698,16 +2707,16 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py class">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMQuitoDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice" title="Permalink to this definition"></a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">IBMQuitoDevice</span></span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice" title="Link to this definition"></a></dt>
 <dd><p>IBM Quito device</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.__new__">
-<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.__new__" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">__new__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.__new__" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.add_damping">
-<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.add_damping" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_damping</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">damping</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.add_damping" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit damping to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2724,7 +2733,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.add_dephasing">
-<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.add_dephasing" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">add_dephasing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dephasing</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.add_dephasing" title="Link to this definition"></a></dt>
 <dd><p>Adds single qubit dephasing to noise rates.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2741,7 +2750,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.longest_chains">
-<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.longest_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.longest_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -2759,7 +2768,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.longest_closed_chains">
-<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.longest_closed_chains" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">longest_closed_chains</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.longest_closed_chains" title="Link to this definition"></a></dt>
 <dd><p>Return a list of longest closed linear chains through the device.</p>
 <p>Returns at least one chain of qubits with linear connectivity in the device ,
 that has the maximum possible number of qubits with linear connectivity in the device.
@@ -2778,7 +2787,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.multi_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.multi_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.multi_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a mutli qubit operations available on the device.</p>
 <p>The list of names also includes the three qubit gate operations.</p>
 <dl class="field-list simple">
@@ -2793,7 +2802,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.multi_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.multi_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">multi_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubits</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.multi_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a multi qubit operation if the multi qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2816,7 +2825,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.name">
-<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.name" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">name</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.name" title="Link to this definition"></a></dt>
 <dd><p>IBM's identifier.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2830,7 +2839,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.number_qubits">
-<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.number_qubits" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">number_qubits</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.number_qubits" title="Link to this definition"></a></dt>
 <dd><p>Return number of qubits in device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2844,7 +2853,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.qubit_decoherence_rates">
-<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.qubit_decoherence_rates" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">qubit_decoherence_rates</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.qubit_decoherence_rates" title="Link to this definition"></a></dt>
 <dd><p>Return the matrix of the decoherence rates of the Lindblad equation.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2861,7 +2870,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.set_single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.set_single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.set_single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a single qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2879,7 +2888,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.set_two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.set_two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">set_two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">gate_time</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.set_two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Set the gate time of a two qubit gate.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2898,7 +2907,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a single qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2912,7 +2921,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">single_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">qubit</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.single_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a single qubit operation if the single qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -2935,7 +2944,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.three_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.three_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">three_qubit_gate_time</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.three_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>three_qubit_gate_time(gate, control_0, control_1, target
 --</p>
 <p>Returns the gate time of a three qubit operation if the three qubit operation is available on device.</p>
@@ -2962,7 +2971,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.to_generic_device">
-<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.to_generic_device" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">to_generic_device</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.to_generic_device" title="Link to this definition"></a></dt>
 <dd><p>Convert the device to a qoqo GenericDevice.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -2979,7 +2988,7 @@ all possible chains. (For example for all-to-all connectivity only one chain wil
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_edges">
-<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_edges" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_edges</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_edges" title="Link to this definition"></a></dt>
 <dd><p>Return the list of pairs of qubits linked by a native two-qubit-gate in the device.</p>
 <p>A pair of qubits is considered linked by a native two-qubit-gate if the device
 can implement a two-qubit-gate between the two qubits without decomposing it
@@ -3002,7 +3011,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_names">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_names" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_names</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_names" title="Link to this definition"></a></dt>
 <dd><p>Returns the names of a two qubit operations available on the device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Returns<span class="colon">:</span></dt>
@@ -3016,7 +3025,7 @@ choice from a list of edges and can be used for applications like routing in qua
 
 <dl class="py method">
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_time">
-<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_time" title="Permalink to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">two_qubit_gate_time</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">control</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.IBMQuitoDevice.two_qubit_gate_time" title="Link to this definition"></a></dt>
 <dd><p>Returns the gate time of a two qubit operation if the two qubit operation is available on device.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -3038,6 +3047,25 @@ choice from a list of edges and can be used for applications like routing in qua
 </dl>
 </dd></dl>
 
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.devices.qoqo_qiskit_device_from_ibmq_identifier">
+<span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.devices.</span></span><span class="sig-name descname"><span class="pre">qoqo_qiskit_device_from_ibmq_identifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">identifier</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#qoqo_qiskit_devices.devices.qoqo_qiskit_device_from_ibmq_identifier" title="Link to this definition"></a></dt>
+<dd><p>Instantiate a new IBMDevice instance based on the given IBM identifier.</p>
+<dl class="simple">
+<dt>Currently available identifiers:</dt><dd><ul class="simple">
+<li><p>ibm_lagos</p></li>
+<li><p>ibm_nairobi</p></li>
+<li><p>ibm_perth</p></li>
+<li><p>ibmq_belem</p></li>
+<li><p>ibmq_jakarta</p></li>
+<li><p>ibmq_lima</p></li>
+<li><p>ibmq_manila</p></li>
+<li><p>ibmq_quito</p></li>
+</ul>
+</dd>
+</dl>
 </dd></dl>
 
 </section>
