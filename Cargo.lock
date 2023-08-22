@@ -540,9 +540,9 @@ dependencies = [
 
 [[package]]
 name = "roqoqo-derive"
-version = "1.5.1"
+version = "1.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ec115a60aa322917c2e7c427037bf323ce83ac75c2df2289564e37698901720c"
+checksum = "fc2af29cfd07b8cd4adf5207aa0365c6bef04008664034aec7679f9a64621d9f"
 dependencies = [
  "proc-macro2",
  "quote",
