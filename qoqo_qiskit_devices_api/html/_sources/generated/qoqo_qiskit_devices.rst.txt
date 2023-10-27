@@ -13,6 +13,7 @@
 
    .. autosummary::
    
+      get_decoherence_on_gate_model
       set_qiskit_noise_information
    
    
