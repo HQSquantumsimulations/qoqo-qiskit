@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices &mdash; qoqo_qiskit_devices 0.2.1 documentation</title>
+  <title>qoqo_qiskit_devices &mdash; qoqo_qiskit_devices 0.2.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -15,7 +15,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=6c0f27eb"></script>
+        <script src="../_static/documentation_options.js?v=16b99c04"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -38,7 +38,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -106,6 +106,12 @@
 <dt class="sig sig-object py" id="qoqo_qiskit_devices.get_decoherence_on_gate_model">
 <span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.</span></span><span class="sig-name descname"><span class="pre">get_decoherence_on_gate_model</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_mocked_information</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">DecoherenceOnGateModel</span></span></span><a class="reference internal" href="../_modules/qoqo_qiskit_devices/device_property.html#get_decoherence_on_gate_model"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit_devices.get_decoherence_on_gate_model" title="Link to this definition"></a></dt>
 <dd><p>Gets the DecoherenceOnGateModel qoqo noise model of an IBM device.</p>
+<p>The paper that relates the gate fidelity to single-qubit damping + dephasing noise
+is <a class="reference external" href="https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.150504">https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.150504</a>.
+The relevant equation is (12). As discussed below it, a heating noise (sigma^+)
+would contribute similarly as damping noise (sigma^-). By combining all three channels
+(damping, heating, dephasing), with proper front factors, one can also obtain a relation
+between depolarising noise and gate fidelity.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">

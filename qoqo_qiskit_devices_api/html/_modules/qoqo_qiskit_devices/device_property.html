@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.2.1 documentation</title>
+  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.2.2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
@@ -14,7 +14,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=6c0f27eb"></script>
+        <script src="../../_static/documentation_options.js?v=16b99c04"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -35,7 +35,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.2.1
+                0.2.2
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -202,6 +202,13 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">noise_models</span><span class="o">.</span><span class="n">DecoherenceOnGateModel</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the DecoherenceOnGateModel qoqo noise model of an IBM device.</span>
 
+<span class="sd">    The paper that relates the gate fidelity to single-qubit damping + dephasing noise</span>
+<span class="sd">    is https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.150504.</span>
+<span class="sd">    The relevant equation is (12). As discussed below it, a heating noise (\\sigma^+)</span>
+<span class="sd">    would contribute similarly as damping noise (\\sigma^-). By combining all three channels</span>
+<span class="sd">    (damping, heating, dephasing), with proper front factors, one can also obtain a relation</span>
+<span class="sd">    between depolarising noise and gate fidelity.</span>
+
 <span class="sd">    Args:</span>
 <span class="sd">        device (ibm_devices): The qoqo_qiskit_devices referencing the IBM device.</span>
 <span class="sd">        get_mocked_information (bool): Whether the returned information is mocked or not.</span>
@@ -268,12 +275,16 @@
         <span class="n">lindblad_noise</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusLindbladNoiseOperator</span><span class="p">()</span>
         <span class="n">dp</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusProduct</span><span class="p">()</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s2">Z&quot;</span><span class="p">)</span>
         <span class="n">lindblad_noise</span><span class="o">.</span><span class="n">add_operator_product</span><span class="p">((</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span> <span class="n">dephasing</span><span class="p">)</span>
-        <span class="n">noise_model</span> <span class="o">=</span> <span class="n">noise_model</span><span class="o">.</span><span class="n">set_single_qubit_gate_error</span><span class="p">(</span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">lindblad_noise</span><span class="p">)</span>
+        <span class="n">noise_model</span> <span class="o">=</span> <span class="n">noise_model</span><span class="o">.</span><span class="n">set_single_qubit_gate_error</span><span class="p">(</span>
+            <span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">lindblad_noise</span>
+        <span class="p">)</span>
 
         <span class="n">lindblad_noise</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusLindbladNoiseOperator</span><span class="p">()</span>
         <span class="n">dp</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusProduct</span><span class="p">()</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ii</span><span class="si">}</span><span class="s2">+&quot;</span><span class="p">)</span>
         <span class="n">lindblad_noise</span><span class="o">.</span><span class="n">add_operator_product</span><span class="p">((</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span> <span class="n">damping</span><span class="p">)</span>
-        <span class="n">noise_model</span> <span class="o">=</span> <span class="n">noise_model</span><span class="o">.</span><span class="n">set_single_qubit_gate_error</span><span class="p">(</span><span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">lindblad_noise</span><span class="p">)</span>
+        <span class="n">noise_model</span> <span class="o">=</span> <span class="n">noise_model</span><span class="o">.</span><span class="n">set_single_qubit_gate_error</span><span class="p">(</span>
+            <span class="s2">&quot;Identity&quot;</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">lindblad_noise</span>
+        <span class="p">)</span>
 
     <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
         <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
