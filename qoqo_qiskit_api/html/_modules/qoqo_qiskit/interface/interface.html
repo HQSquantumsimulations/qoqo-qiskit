@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.interface.interface &mdash; qoqo_qiskit 0.2.3 documentation</title>
+  <title>qoqo_qiskit.interface.interface &mdash; qoqo_qiskit 0.2.4 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
@@ -14,7 +14,7 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=89fb089e"></script>
+        <script src="../../../_static/documentation_options.js?v=e3d4ebda"></script>
         <script src="../../../_static/doctools.js?v=888ff710"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -35,7 +35,7 @@
             qoqo_qiskit
           </a>
               <div class="version">
-                0.2.3
+                0.2.4
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -122,12 +122,14 @@
     <span class="c1">#   - PragmaLoop</span>
     <span class="c1">#   - MeasureQubit</span>
     <span class="n">filtered_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+    <span class="n">to_fix</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">circuit_info</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">circuit_info</span><span class="p">[</span><span class="s2">&quot;MeasurementInfo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">circuit_info</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="n">circuit_info</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaGetStateVector&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">circuit_info</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaGetDensityMatrix&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">initial_statevector</span> <span class="o">=</span> <span class="p">[]</span>
+
     <span class="k">for</span> <span class="n">op</span> <span class="ow">in</span> <span class="n">circuit</span><span class="p">:</span>
         <span class="k">if</span> <span class="s2">&quot;PragmaSetStateVector&quot;</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">tags</span><span class="p">():</span>
             <span class="n">initial_statevector</span> <span class="o">=</span> <span class="n">op</span><span class="o">.</span><span class="n">statevector</span><span class="p">()</span>
@@ -161,6 +163,9 @@
                     <span class="n">filtered_circuit</span> <span class="o">+=</span> <span class="n">op</span><span class="o">.</span><span class="n">circuit</span><span class="p">()</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;A symbolic PragmaLoop operation is not supported.&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="s2">&quot;PragmaSleep&quot;</span> <span class="ow">in</span> <span class="n">op</span><span class="o">.</span><span class="n">tags</span><span class="p">():</span>
+            <span class="n">to_fix</span> <span class="o">=</span> <span class="kc">True</span>
+            <span class="n">filtered_circuit</span> <span class="o">+=</span> <span class="n">op</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">filtered_circuit</span> <span class="o">+=</span> <span class="n">op</span>
 
@@ -171,6 +176,10 @@
     <span class="c1"># QASM -&gt; Qiskit transformation</span>
     <span class="n">return_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="p">()</span>
     <span class="n">from_qasm_circuit</span> <span class="o">=</span> <span class="n">QuantumCircuit</span><span class="o">.</span><span class="n">from_qasm_str</span><span class="p">(</span><span class="n">input_qasm_str</span><span class="p">)</span>
+
+    <span class="c1"># Fixing custom gates qiskit translation</span>
+    <span class="k">if</span> <span class="n">to_fix</span><span class="p">:</span>
+        <span class="n">from_qasm_circuit</span> <span class="o">=</span> <span class="n">_custom_gates_fix</span><span class="p">(</span><span class="n">from_qasm_circuit</span><span class="p">)</span>
 
     <span class="c1"># Handling PragmaSetStateVector</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">initial_statevector</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -189,6 +198,27 @@
 
     <span class="k">return</span> <span class="p">(</span><span class="n">return_circuit</span><span class="p">,</span> <span class="n">circuit_info</span><span class="p">)</span></div>
 
+
+
+<span class="k">def</span> <span class="nf">_custom_gates_fix</span><span class="p">(</span><span class="n">from_qasm_circuit</span><span class="p">:</span> <span class="n">QuantumCircuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QuantumCircuit</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transforms the custom gates imported by qiskit via QASM to correct qiskit Instructions.</span>
+
+<span class="sd">    In case of incompatibilities, this step allows to directly keep the already transformed</span>
+<span class="sd">    QuantumCircuit and modify the Instruction references imported via QASM.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        from_qasm_circuit (QuantumCircuit): the qiskit QuantumCircuit to modify.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        QuantumCircuit: the modified qiskit QuantumCircuit.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">out_circuit</span> <span class="o">=</span> <span class="n">from_qasm_circuit</span><span class="o">.</span><span class="n">copy_empty_like</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">inst</span><span class="p">,</span> <span class="n">qargs</span><span class="p">,</span> <span class="n">cargs</span> <span class="ow">in</span> <span class="n">from_qasm_circuit</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">inst</span><span class="o">.</span><span class="n">name</span> <span class="o">==</span> <span class="s2">&quot;pragmasleep&quot;</span><span class="p">:</span>
+            <span class="n">out_circuit</span><span class="o">.</span><span class="n">delay</span><span class="p">(</span><span class="n">inst</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">qargs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">out_circuit</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">inst</span><span class="p">,</span> <span class="n">qargs</span><span class="p">,</span> <span class="n">cargs</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out_circuit</span>
 </pre></div>
 
            </div>
