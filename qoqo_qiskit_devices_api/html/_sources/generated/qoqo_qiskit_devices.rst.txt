@@ -14,7 +14,8 @@
    .. autosummary::
    
       get_decoherence_on_gate_model
-      set_qiskit_noise_information
+      get_noise_models
+      set_qiskit_device_information
    
    
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices &mdash; qoqo_qiskit_devices 0.2.4 documentation</title>
+  <title>qoqo_qiskit_devices &mdash; qoqo_qiskit_devices 0.2.5 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
 
@@ -15,7 +15,7 @@
   
         <script src="../_static/jquery.js?v=5d32c60e"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../_static/documentation_options.js?v=e3d4ebda"></script>
+        <script src="../_static/documentation_options.js?v=7c967f40"></script>
         <script src="../_static/doctools.js?v=888ff710"></script>
         <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -38,7 +38,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
@@ -52,7 +52,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">qoqo_qiskit_devices</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="generated/qoqo_qiskit_devices.devices.html">qoqo_qiskit_devices.devices</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#qoqo_qiskit_devices.get_decoherence_on_gate_model"><code class="docutils literal notranslate"><span class="pre">get_decoherence_on_gate_model()</span></code></a></li>
-<li class="toctree-l2"><a class="reference internal" href="#qoqo_qiskit_devices.set_qiskit_noise_information"><code class="docutils literal notranslate"><span class="pre">set_qiskit_noise_information()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qoqo_qiskit_devices.get_noise_models"><code class="docutils literal notranslate"><span class="pre">get_noise_models()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#qoqo_qiskit_devices.set_qiskit_device_information"><code class="docutils literal notranslate"><span class="pre">set_qiskit_device_information()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -97,7 +98,10 @@
 <tr class="row-odd"><td><p><a class="reference internal" href="#qoqo_qiskit_devices.get_decoherence_on_gate_model" title="qoqo_qiskit_devices.get_decoherence_on_gate_model"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_decoherence_on_gate_model</span></code></a>(device[, ...])</p></td>
 <td><p>Gets the DecoherenceOnGateModel qoqo noise model of an IBM device.</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#qoqo_qiskit_devices.set_qiskit_noise_information" title="qoqo_qiskit_devices.set_qiskit_noise_information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_qiskit_noise_information</span></code></a>(device[, ...])</p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="#qoqo_qiskit_devices.get_noise_models" title="qoqo_qiskit_devices.get_noise_models"><code class="xref py py-obj docutils literal notranslate"><span class="pre">get_noise_models</span></code></a>(device[, ...])</p></td>
+<td><p>Get the DecoherenceOnGateModel and DecoherenceOnGateModel qoqo noise models of an IBMDevice.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qoqo_qiskit_devices.set_qiskit_device_information" title="qoqo_qiskit_devices.set_qiskit_device_information"><code class="xref py py-obj docutils literal notranslate"><span class="pre">set_qiskit_device_information</span></code></a>(device[, ...])</p></td>
 <td><p>Sets a qoqo_qiskit_devices.ibm_devices instance noise info.</p></td>
 </tr>
 </tbody>
@@ -129,13 +133,37 @@ between depolarising noise and gate fidelity.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt class="sig sig-object py" id="qoqo_qiskit_devices.set_qiskit_noise_information">
-<span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.</span></span><span class="sig-name descname"><span class="pre">set_qiskit_noise_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_mocked_information</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">module</span></span></span><a class="reference internal" href="../_modules/qoqo_qiskit_devices/device_property.html#set_qiskit_noise_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit_devices.set_qiskit_noise_information" title="Link to this definition"></a></dt>
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.get_noise_models">
+<span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.</span></span><span class="sig-name descname"><span class="pre">get_noise_models</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device:</span> <span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_mocked_information:</span> <span class="pre">bool</span> <span class="pre">=</span> <span class="pre">False)</span> <span class="pre">-&gt;</span> <span class="pre">(&lt;class</span> <span class="pre">'builtins.ContinuousDecoherenceModel'&gt;</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">&lt;class</span> <span class="pre">'builtins.DecoherenceOnGateModel'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/qoqo_qiskit_devices/device_property.html#get_noise_models"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit_devices.get_noise_models" title="Link to this definition"></a></dt>
+<dd><p>Get the DecoherenceOnGateModel and DecoherenceOnGateModel qoqo noise models of an IBMDevice.</p>
+<p>The paper that relates the gate fidelity to single-qubit damping + dephasing noise
+is <a class="reference external" href="https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.150504">https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.150504</a>.
+The relevant equation is (12). As discussed below it, a heating noise (sigma^+)
+would contribute similarly as damping noise (sigma^-). By combining all three channels
+(damping, heating, dephasing), with proper front factors, one can also obtain a relation
+between depolarising noise and gate fidelity.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>device</strong> (<em>ibm_devices</em>) -- The qoqo_qiskit_devices referencing the IBM device.</p></li>
+<li><p><strong>get_mocked_information</strong> (<em>bool</em>) -- Whether the returned information is mocked or not.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The qoqo noise model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(noise_models.ContinuousDecoherenceModel, noise_models.DecoherenceOnGateModel)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="qoqo_qiskit_devices.set_qiskit_device_information">
+<span class="sig-prename descclassname"><span class="pre">qoqo_qiskit_devices.</span></span><span class="sig-name descname"><span class="pre">set_qiskit_device_information</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">device</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">module</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">get_mocked_information</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">module</span></span></span><a class="reference internal" href="../_modules/qoqo_qiskit_devices/device_property.html#set_qiskit_device_information"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit_devices.set_qiskit_device_information" title="Link to this definition"></a></dt>
 <dd><p>Sets a qoqo_qiskit_devices.ibm_devices instance noise info.</p>
 <dl class="simple">
 <dt>Obtains the device info from qiskit's IBMProvider and performs the following updates:</dt><dd><ul class="simple">
-<li><p>adds damping</p></li>
-<li><p>adds dephasing</p></li>
 <li><p>sets single qubit gate times</p></li>
 <li><p>sets two qubit gate times</p></li>
 </ul>

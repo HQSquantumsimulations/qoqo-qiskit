@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.2.4 documentation</title>
+  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.2.5 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
@@ -14,7 +14,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=e3d4ebda"></script>
+        <script src="../../_static/documentation_options.js?v=7c967f40"></script>
         <script src="../../_static/doctools.js?v=888ff710"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -35,7 +35,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.2.4
+                0.2.5
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -75,6 +75,7 @@
              
   <h1>Source code for qoqo_qiskit_devices.device_property</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Device information-gathering routines.&quot;&quot;&quot;</span>
+
 <span class="c1"># Copyright © 2023 HQS Quantum Simulations GmbH. All Rights Reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
@@ -119,16 +120,14 @@
         <span class="k">return</span> <span class="s2">&quot;id&quot;</span>
 
 
-<div class="viewcode-block" id="set_qiskit_noise_information">
-<a class="viewcode-back" href="../../generated/qoqo_qiskit_devices.html#qoqo_qiskit_devices.set_qiskit_noise_information">[docs]</a>
-<span class="k">def</span> <span class="nf">set_qiskit_noise_information</span><span class="p">(</span>
+<div class="viewcode-block" id="set_qiskit_device_information">
+<a class="viewcode-back" href="../../generated/qoqo_qiskit_devices.html#qoqo_qiskit_devices.set_qiskit_device_information">[docs]</a>
+<span class="k">def</span> <span class="nf">set_qiskit_device_information</span><span class="p">(</span>
     <span class="n">device</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">,</span> <span class="n">get_mocked_information</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets a qoqo_qiskit_devices.ibm_devices instance noise info.</span>
 
 <span class="sd">    Obtains the device info from qiskit&#39;s IBMProvider and performs the following updates:</span>
-<span class="sd">        - adds damping</span>
-<span class="sd">        - adds dephasing</span>
 <span class="sd">        - sets single qubit gate times</span>
 <span class="sd">        - sets two qubit gate times</span>
 
@@ -140,21 +139,12 @@
 <span class="sd">        ibm_devices: The input instance updated with qiskit&#39;s physical device info.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">name</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>
-    <span class="n">warn</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="k">if</span> <span class="n">get_mocked_information</span><span class="p">:</span>
         <span class="n">properties</span> <span class="o">=</span> <span class="n">MockedProperties</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">properties</span> <span class="o">=</span> <span class="n">IBMProvider</span><span class="p">()</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">number_qubits</span><span class="p">()):</span>
-        <span class="n">damping</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t1</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">)</span>
-        <span class="n">dephasing</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t2</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span>
-            <span class="mi">2</span> <span class="o">*</span> <span class="n">properties</span><span class="o">.</span><span class="n">t1</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">if</span> <span class="n">dephasing</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">warn</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="n">device</span><span class="o">.</span><span class="n">add_damping</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">,</span> <span class="n">damping</span><span class="o">=</span><span class="n">damping</span><span class="p">)</span>
-        <span class="n">device</span><span class="o">.</span><span class="n">add_dephasing</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">qubit</span><span class="p">,</span> <span class="n">dephasing</span><span class="o">=</span><span class="n">dephasing</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">single_qubit_gate_names</span><span class="p">():</span>
             <span class="n">qiskit_gate</span> <span class="o">=</span> <span class="n">_qiskit_gate_equivalent</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
             <span class="n">device</span><span class="o">.</span><span class="n">set_single_qubit_gate_time</span><span class="p">(</span>
@@ -184,12 +174,6 @@
                     <span class="n">gate</span><span class="o">=</span><span class="n">qiskit_gate</span><span class="p">,</span> <span class="n">qubits</span><span class="o">=</span><span class="p">[</span><span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">]],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gate_length&quot;</span>
                 <span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
             <span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
-        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-            <span class="s2">&quot;IBM&#39;s calibration data resulted in negative dephasing value(s).&quot;</span><span class="p">,</span>
-            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-        <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">device</span></div>
 
@@ -293,6 +277,98 @@
         <span class="p">)</span>
 
     <span class="k">return</span> <span class="n">noise_model</span></div>
+
+
+
+<div class="viewcode-block" id="get_noise_models">
+<a class="viewcode-back" href="../../generated/qoqo_qiskit_devices.html#qoqo_qiskit_devices.get_noise_models">[docs]</a>
+<span class="k">def</span> <span class="nf">get_noise_models</span><span class="p">(</span>
+    <span class="n">device</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">,</span> <span class="n">get_mocked_information</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">noise_models</span><span class="o">.</span><span class="n">ContinuousDecoherenceModel</span><span class="p">,</span> <span class="n">noise_models</span><span class="o">.</span><span class="n">DecoherenceOnGateModel</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the DecoherenceOnGateModel and DecoherenceOnGateModel qoqo noise models of an IBMDevice.</span>
+
+<span class="sd">    The paper that relates the gate fidelity to single-qubit damping + dephasing noise</span>
+<span class="sd">    is https://journals.aps.org/prl/pdf/10.1103/PhysRevLett.129.150504.</span>
+<span class="sd">    The relevant equation is (12). As discussed below it, a heating noise (\\sigma^+)</span>
+<span class="sd">    would contribute similarly as damping noise (\\sigma^-). By combining all three channels</span>
+<span class="sd">    (damping, heating, dephasing), with proper front factors, one can also obtain a relation</span>
+<span class="sd">    between depolarising noise and gate fidelity.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        device (ibm_devices): The qoqo_qiskit_devices referencing the IBM device.</span>
+<span class="sd">        get_mocked_information (bool): Whether the returned information is mocked or not.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        (noise_models.ContinuousDecoherenceModel, noise_models.DecoherenceOnGateModel): The qoqo noise model.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">number_qubits</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">number_qubits</span><span class="p">()</span>
+    <span class="n">continuous_decoherence</span> <span class="o">=</span> <span class="n">noise_models</span><span class="o">.</span><span class="n">ContinuousDecoherenceModel</span><span class="p">()</span>
+    <span class="n">decoherence_on_gate</span> <span class="o">=</span> <span class="n">noise_models</span><span class="o">.</span><span class="n">DecoherenceOnGateModel</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">get_mocked_information</span><span class="p">:</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">MockedProperties</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">IBMProvider</span><span class="p">()</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
+    <span class="n">warn</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">operators</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+    <span class="n">rate_factors</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
+
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_qubits</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;SqrtPauliX&quot;</span><span class="p">,</span> <span class="s2">&quot;PauliX&quot;</span><span class="p">]:</span>
+            <span class="n">qiskit_gate</span> <span class="o">=</span> <span class="n">_qiskit_gate_equivalent</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
+            <span class="n">gate_error</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">gate_error</span><span class="p">(</span><span class="n">qiskit_gate</span><span class="p">,</span> <span class="n">ii</span><span class="p">)</span>
+            <span class="n">gate_time</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">gate_property</span><span class="p">(</span>
+                <span class="n">gate</span><span class="o">=</span><span class="n">qiskit_gate</span><span class="p">,</span> <span class="n">qubits</span><span class="o">=</span><span class="n">ii</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gate_length&quot;</span>
+            <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">depol_rate</span> <span class="o">=</span> <span class="n">gate_error</span> <span class="o">/</span> <span class="n">gate_time</span>
+            <span class="n">depol_rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">factor</span> <span class="o">*</span> <span class="n">depol_rate</span> <span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">rate_factors</span><span class="p">]</span>
+
+            <span class="n">lindblad_noise</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusLindbladNoiseOperator</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">rate</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">operators</span><span class="p">,</span> <span class="n">depol_rates</span><span class="p">):</span>
+                <span class="n">dp</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusProduct</span><span class="p">()</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">ii</span><span class="si">}{</span><span class="n">op</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                <span class="n">lindblad_noise</span><span class="o">.</span><span class="n">add_operator_product</span><span class="p">((</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span> <span class="n">rate</span><span class="p">)</span>
+
+            <span class="n">decoherence_on_gate</span> <span class="o">=</span> <span class="n">decoherence_on_gate</span><span class="o">.</span><span class="n">set_single_qubit_gate_error</span><span class="p">(</span>
+                <span class="n">gate</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">lindblad_noise</span>
+            <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">two_qubit_gate_names</span><span class="p">():</span>
+        <span class="n">qiskit_gate</span> <span class="o">=</span> <span class="n">_qiskit_gate_equivalent</span><span class="p">(</span><span class="n">gate</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">edge</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">two_qubit_edges</span><span class="p">():</span>
+            <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">jj</span> <span class="ow">in</span> <span class="p">[</span><span class="n">edge</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">edge</span><span class="p">))]:</span>
+                <span class="n">gate_error</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">gate_error</span><span class="p">(</span><span class="n">qiskit_gate</span><span class="p">,</span> <span class="p">(</span><span class="n">ii</span><span class="p">,</span> <span class="n">jj</span><span class="p">))</span>
+                <span class="n">gate_time</span> <span class="o">=</span> <span class="n">properties</span><span class="o">.</span><span class="n">gate_property</span><span class="p">(</span>
+                    <span class="n">gate</span><span class="o">=</span><span class="n">qiskit_gate</span><span class="p">,</span> <span class="n">qubits</span><span class="o">=</span><span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="n">jj</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;gate_length&quot;</span>
+                <span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">depol_rate</span> <span class="o">=</span> <span class="p">(</span><span class="mi">5</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="n">gate_error</span> <span class="o">/</span> <span class="n">gate_time</span>
+                <span class="n">depol_rates</span> <span class="o">=</span> <span class="p">[</span><span class="n">factor</span> <span class="o">*</span> <span class="n">depol_rate</span> <span class="k">for</span> <span class="n">factor</span> <span class="ow">in</span> <span class="n">rate_factors</span><span class="p">]</span>
+
+                <span class="n">lindblad_noise</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusLindbladNoiseOperator</span><span class="p">()</span>
+                <span class="k">for</span> <span class="n">kk</span> <span class="ow">in</span> <span class="p">[</span><span class="n">ii</span><span class="p">,</span> <span class="n">jj</span><span class="p">]:</span>
+                    <span class="k">for</span> <span class="n">op</span><span class="p">,</span> <span class="n">rate</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">operators</span><span class="p">,</span> <span class="n">depol_rates</span><span class="p">):</span>
+                        <span class="n">dp</span> <span class="o">=</span> <span class="n">spins</span><span class="o">.</span><span class="n">PlusMinusProduct</span><span class="p">()</span><span class="o">.</span><span class="n">from_string</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kk</span><span class="si">}{</span><span class="n">op</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                        <span class="n">lindblad_noise</span><span class="o">.</span><span class="n">add_operator_product</span><span class="p">((</span><span class="n">dp</span><span class="p">,</span> <span class="n">dp</span><span class="p">),</span> <span class="n">rate</span><span class="p">)</span>
+
+                <span class="n">decoherence_on_gate</span> <span class="o">=</span> <span class="n">decoherence_on_gate</span><span class="o">.</span><span class="n">set_two_qubit_gate_error</span><span class="p">(</span>
+                    <span class="n">gate</span><span class="p">,</span> <span class="n">ii</span><span class="p">,</span> <span class="n">jj</span><span class="p">,</span> <span class="n">lindblad_noise</span>
+                <span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">number_qubits</span><span class="p">):</span>
+        <span class="n">damping</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t1</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">ii</span><span class="p">)</span>
+        <span class="n">dephasing</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">properties</span><span class="o">.</span><span class="n">t2</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">ii</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">properties</span><span class="o">.</span><span class="n">t1</span><span class="p">(</span><span class="n">qubit</span><span class="o">=</span><span class="n">ii</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">dephasing</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">warn</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="n">continuous_decoherence</span> <span class="o">=</span> <span class="n">continuous_decoherence</span><span class="o">.</span><span class="n">add_dephasing_rate</span><span class="p">(</span>
+            <span class="p">[</span><span class="n">ii</span><span class="p">],</span> <span class="n">dephasing</span>
+        <span class="p">)</span>
+        <span class="n">continuous_decoherence</span> <span class="o">=</span> <span class="n">continuous_decoherence</span><span class="o">.</span><span class="n">add_damping_rate</span><span class="p">([</span><span class="n">ii</span><span class="p">],</span> <span class="n">damping</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">warn</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">&quot;IBM&#39;s calibration data resulted in negative dephasing value(s).&quot;</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="k">return</span> <span class="p">(</span><span class="n">continuous_decoherence</span><span class="p">,</span> <span class="n">decoherence_on_gate</span><span class="p">)</span></div>
 
 </pre></div>
 
