@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qoqo_qiskit.backend.queued_results &mdash; qoqo_qiskit 0.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../../_static/documentation_options.js?v=8f8119fe"></script>
+        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            qoqo_qiskit
+          </a>
+              <div class="version">
+                0.3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../generated/qoqo_qiskit.html">qoqo_qiskit</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">qoqo_qiskit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">qoqo_qiskit.backend.queued_results</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for qoqo_qiskit.backend.queued_results</h1><div class="highlight"><pre>
+<span></span><span class="c1"># Copyright © 2024 HQS Quantum Simulations GmbH.</span>
+<span class="c1">#</span>
+<span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
+<span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#     http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1"># Unless required by applicable law or agreed to in writing, software distributed under the License</span>
+<span class="c1"># is distributed on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express</span>
+<span class="c1"># or implied. See the License for the specific language governing permissions and limitations under</span>
+<span class="c1"># the License.</span>
+<span class="sd">&quot;&quot;&quot;Queued Jobs.&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+
+<span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">JobStatus</span>
+<span class="kn">from</span> <span class="nn">qiskit_ibm_runtime</span> <span class="kn">import</span> <span class="n">QiskitRuntimeService</span>
+<span class="kn">from</span> <span class="nn">qoqo</span> <span class="kn">import</span> <span class="n">measurements</span>
+
+<span class="kn">from</span> <span class="nn">.post_processing</span> <span class="kn">import</span> <span class="n">_transform_job_result</span>
+<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">is_valid_uuid4</span>
+
+
+<div class="viewcode-block" id="QueuedCircuitRun">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun">[docs]</a>
+<span class="k">class</span> <span class="nc">QueuedCircuitRun</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Queued Result of the circuit.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="QueuedCircuitRun.__init__">
+<a class="viewcode-back" href="../../../generated/generated/qoqo_qiskit.QueuedCircuitRun.html#qoqo_qiskit.QueuedCircuitRun.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">job</span><span class="p">:</span> <span class="n">Job</span><span class="p">,</span>
+        <span class="n">memory</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
+        <span class="n">sim_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">registers_info</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+        <span class="p">],</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise the QueuedCircuitRun class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            job (Job): The job that is run.</span>
+<span class="sd">            memory (bool): True if the result is meant to be read via `job.get_memory()` instead</span>
+<span class="sd">                of `job.get_counts()`.</span>
+<span class="sd">            sim_type (str): The simulation type. This can be &quot;automatic&quot;, &quot;statevector&quot;</span>
+<span class="sd">                or &quot;density_matrix&quot;.</span>
+<span class="sd">            registers_info (Tuple[Any]): The initially setup registers.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="p">:</span> <span class="n">Job</span> <span class="o">=</span> <span class="n">job</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="n">memory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_sim_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">sim_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registers_info</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="n">registers_info</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span>
+            <span class="n">Tuple</span><span class="p">[</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+            <span class="p">]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="kc">None</span></div>
+
+
+<div class="viewcode-block" id="QueuedCircuitRun.to_json">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun.to_json">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert self to a JSON string.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: self as a JSON string.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">json_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;job_id&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="o">.</span><span class="n">job_id</span><span class="p">(),</span>
+            <span class="s2">&quot;memory&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span><span class="p">,</span>
+            <span class="s2">&quot;sim_type&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sim_type</span><span class="p">,</span>
+            <span class="s2">&quot;registers_info&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registers_info</span><span class="p">,</span>
+            <span class="s2">&quot;qoqo_result&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dict</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QueuedCircuitRun.from_json">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun.from_json">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedCircuitRun</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a JSON string to an instance of QueuedCircuitRun.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            string (str): JSON string to convert.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            QueuedCircuitRun: The converted instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">json_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+        <span class="c1"># If id is valid uuid4, then the job was locally executed via qiskit_aer.AerSimulator()</span>
+        <span class="k">if</span> <span class="n">is_valid_uuid4</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;job_id&quot;</span><span class="p">]):</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The job was executed locally via qiskit_aer.AerSimulator(). &quot;</span>
+                <span class="s2">&quot;Retrieval is not possible.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">service</span> <span class="o">=</span> <span class="n">QiskitRuntimeService</span><span class="p">()</span>
+            <span class="n">job</span> <span class="o">=</span> <span class="n">service</span><span class="o">.</span><span class="n">job</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;job_id&quot;</span><span class="p">])</span>
+
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">QueuedCircuitRun</span><span class="p">(</span>
+            <span class="n">job</span><span class="o">=</span><span class="n">job</span><span class="p">,</span>
+            <span class="n">memory</span><span class="o">=</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;memory&quot;</span><span class="p">],</span>
+            <span class="n">sim_type</span><span class="o">=</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;sim_type&quot;</span><span class="p">],</span>
+            <span class="n">registers_info</span><span class="o">=</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;registers_info&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;qoqo_result&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">instance</span><span class="o">.</span><span class="n">_qoqo_result</span> <span class="o">=</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;qoqo_result&quot;</span><span class="p">]</span>
+
+        <span class="k">return</span> <span class="n">instance</span></div>
+
+
+<div class="viewcode-block" id="QueuedCircuitRun.poll_result">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun.poll_result">[docs]</a>
+    <span class="k">def</span> <span class="nf">poll_result</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="n">Tuple</span><span class="p">[</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+        <span class="p">]</span>
+    <span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Poll the result.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Tuple[Dict[str, List[List[bool]]],</span>
+<span class="sd">                  Dict[str, List[List[float]]],</span>
+<span class="sd">                  Dict[str, List[List[complex]]]]: Result if the run was successful.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: The job failed or was cancelled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qoqo_result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qoqo_result</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="o">.</span><span class="n">in_final_state</span><span class="p">():</span>
+            <span class="n">status</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="o">.</span><span class="n">status</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">status</span> <span class="o">==</span> <span class="n">JobStatus</span><span class="o">.</span><span class="n">DONE</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_qoqo_result</span> <span class="o">=</span> <span class="n">_transform_job_result</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_memory</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_sim_type</span><span class="p">,</span>
+                    <span class="n">result</span><span class="p">,</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_registers_info</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_registers_info</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_registers_info</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_registers_info</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_qoqo_result</span>
+            <span class="k">elif</span> <span class="n">status</span> <span class="o">==</span> <span class="n">JobStatus</span><span class="o">.</span><span class="n">ERROR</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The job failed.&quot;</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="s2">&quot;The job was cancelled.&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="QueuedProgramRun">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun">[docs]</a>
+<span class="k">class</span> <span class="nc">QueuedProgramRun</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Queued Result of the measurement.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="QueuedProgramRun.__init__">
+<a class="viewcode-back" href="../../../generated/generated/qoqo_qiskit.QueuedProgramRun.html#qoqo_qiskit.QueuedProgramRun.__init__">[docs]</a>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">queued_circuits</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedCircuitRun</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise the QueuedProgramRun class.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            measurement (qoqo.measurements): The qoqo Measurement to run.</span>
+<span class="sd">            queued_circuits (List[QueuedCircuitRun]): The list of associated queued circuits.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: The measurement type is unknown.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="nb">isinstance</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">PauliZProduct</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">CheatedPauliZProduct</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">Cheated</span><span class="p">)</span>
+            <span class="ow">or</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">ClassicalRegister</span><span class="p">)</span>
+        <span class="p">):</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span> <span class="o">=</span> <span class="n">measurement</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unknown measurement type.&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_queued_circuits</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedCircuitRun</span><span class="p">]</span> <span class="o">=</span> <span class="n">queued_circuits</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="p">({},</span> <span class="p">{},</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="n">circuit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queued_circuits</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">circuit</span><span class="o">.</span><span class="n">_qoqo_result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span></div>
+
+
+<div class="viewcode-block" id="QueuedProgramRun.to_json">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.to_json">[docs]</a>
+    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert self to a JSON string.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: self as a JSON string.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: The measurement type is unknown.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queued_circuits_serialised</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">circuit</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_queued_circuits</span><span class="p">:</span>
+            <span class="n">queued_circuits_serialised</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circuit</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">PauliZProduct</span><span class="p">):</span>
+            <span class="n">measurement_type</span> <span class="o">=</span> <span class="s2">&quot;PauliZProduct&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">CheatedPauliZProduct</span><span class="p">):</span>
+            <span class="n">measurement_type</span> <span class="o">=</span> <span class="s2">&quot;CheatedPauliZProduct&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">Cheated</span><span class="p">):</span>
+            <span class="n">measurement_type</span> <span class="o">=</span> <span class="s2">&quot;Cheated&quot;</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">ClassicalRegister</span><span class="p">):</span>
+            <span class="n">measurement_type</span> <span class="o">=</span> <span class="s2">&quot;ClassicalRegister&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unknown measurement type&quot;</span><span class="p">)</span>
+
+        <span class="n">json_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;measurement_type&quot;</span><span class="p">:</span> <span class="n">measurement_type</span><span class="p">,</span>
+            <span class="s2">&quot;measurement&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="o">.</span><span class="n">to_json</span><span class="p">(),</span>
+            <span class="s2">&quot;queued_circuits&quot;</span><span class="p">:</span> <span class="n">queued_circuits_serialised</span><span class="p">,</span>
+            <span class="s2">&quot;registers&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_dict</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QueuedProgramRun.from_json">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.from_json">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedProgramRun</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a JSON string to an instance of QueuedProgramRun.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            string (str): JSON string to convert.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: The measurement type is unknown.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            QueuedProgramRun: The converted instance.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">json_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">string</span><span class="p">)</span>
+
+        <span class="n">queued_circuits_deserialised</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedCircuitRun</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">registers</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+            <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="p">({},</span> <span class="p">{},</span> <span class="p">{})</span>
+        <span class="k">for</span> <span class="n">circuit</span> <span class="ow">in</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;queued_circuits&quot;</span><span class="p">]:</span>
+            <span class="n">circ_instance</span> <span class="o">=</span> <span class="n">QueuedCircuitRun</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+            <span class="n">queued_circuits_deserialised</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">circ_instance</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">circ_instance</span><span class="o">.</span><span class="n">_qoqo_result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">registers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">circ_instance</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">registers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">circ_instance</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="n">registers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">circ_instance</span><span class="o">.</span><span class="n">_qoqo_result</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;PauliZProduct&quot;</span><span class="p">:</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="n">measurements</span><span class="o">.</span><span class="n">PauliZProduct</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;CheatedPauliZProduct&quot;</span><span class="p">:</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="n">measurements</span><span class="o">.</span><span class="n">CheatedPauliZProduct</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;Cheated&quot;</span><span class="p">:</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="n">measurements</span><span class="o">.</span><span class="n">Cheated</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement&quot;</span><span class="p">])</span>
+        <span class="k">elif</span> <span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ClassicalRegister&quot;</span><span class="p">:</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="n">measurements</span><span class="o">.</span><span class="n">ClassicalRegister</span><span class="o">.</span><span class="n">from_json</span><span class="p">(</span><span class="n">json_dict</span><span class="p">[</span><span class="s2">&quot;measurement&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Unknown measurement type&quot;</span><span class="p">)</span>
+
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">QueuedProgramRun</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">queued_circuits_deserialised</span><span class="p">)</span>
+        <span class="n">instance</span><span class="o">.</span><span class="n">_registers</span> <span class="o">=</span> <span class="n">registers</span>
+        <span class="k">return</span> <span class="n">instance</span></div>
+
+
+<div class="viewcode-block" id="QueuedProgramRun.poll_result">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.poll_result">[docs]</a>
+    <span class="k">def</span> <span class="nf">poll_result</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="n">Union</span><span class="p">[</span>
+            <span class="n">Tuple</span><span class="p">[</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Poll the result.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Union[Tuple[Dict[str, List[List[bool]]],</span>
+<span class="sd">                    Dict[str, List[List[float]]],</span>
+<span class="sd">                    Dict[str, List[List[complex]]]]]: Result if all runs were successful.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: The jobs failed or were cancelled.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">all_finished</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_queued_circuits</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">queued_circuit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_queued_circuits</span><span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">queued_circuit</span><span class="o">.</span><span class="n">poll_result</span><span class="p">()</span>
+            <span class="k">if</span> <span class="n">res</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># add results to bit registers</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># add results to float registers</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">res</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>  <span class="c1"># add results to complex registers</span>
+                <span class="n">all_finished</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">all_finished</span><span class="p">):</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="p">,</span> <span class="n">measurements</span><span class="o">.</span><span class="n">ClassicalRegister</span><span class="p">):</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_measurement</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_registers</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, HQS Quantum Simulations GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="English" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>qoqo_qiskit.QueuedProgramRun &mdash; qoqo_qiskit 0.3.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8f8119fe"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="qoqo_qiskit.QueuedCircuitRun" href="qoqo_qiskit.QueuedCircuitRun.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            qoqo_qiskit
+          </a>
+              <div class="version">
+                0.3.0
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../qoqo_qiskit.html">qoqo_qiskit</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="qoqo_qiskit.to_qiskit_circuit.html">qoqo_qiskit.to_qiskit_circuit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qoqo_qiskit.QoqoQiskitBackend.html">qoqo_qiskit.QoqoQiskitBackend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qoqo_qiskit.QueuedCircuitRun.html">qoqo_qiskit.QueuedCircuitRun</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">qoqo_qiskit.QueuedProgramRun</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qoqo_qiskit.QueuedProgramRun"><code class="docutils literal notranslate"><span class="pre">QueuedProgramRun</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit.QueuedProgramRun.__init__"><code class="docutils literal notranslate"><span class="pre">QueuedProgramRun.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit.QueuedProgramRun.from_json"><code class="docutils literal notranslate"><span class="pre">QueuedProgramRun.from_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit.QueuedProgramRun.poll_result"><code class="docutils literal notranslate"><span class="pre">QueuedProgramRun.poll_result()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#qoqo_qiskit.QueuedProgramRun.to_json"><code class="docutils literal notranslate"><span class="pre">QueuedProgramRun.to_json()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend"><code class="docutils literal notranslate"><span class="pre">QoqoQiskitBackend</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun"><code class="docutils literal notranslate"><span class="pre">QueuedCircuitRun</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun"><code class="docutils literal notranslate"><span class="pre">QueuedProgramRun</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.to_qiskit_circuit"><code class="docutils literal notranslate"><span class="pre">to_qiskit_circuit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">qoqo_qiskit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../qoqo_qiskit.html">qoqo_qiskit</a></li>
+      <li class="breadcrumb-item active">qoqo_qiskit.QueuedProgramRun</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/generated/generated/qoqo_qiskit.QueuedProgramRun.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="qoqo-qiskit-queuedprogramrun">
+<h1>qoqo_qiskit.QueuedProgramRun<a class="headerlink" href="#qoqo-qiskit-queuedprogramrun" title="Link to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="qoqo_qiskit.QueuedProgramRun">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">qoqo_qiskit.</span></span><span class="sig-name descname"><span class="pre">QueuedProgramRun</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queued_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun" title="qoqo_qiskit.backend.queued_results.QueuedCircuitRun"><span class="pre">QueuedCircuitRun</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/qoqo_qiskit/backend/queued_results.html#QueuedProgramRun"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit.QueuedProgramRun" title="Link to this definition"></a></dt>
+<dd><p>Queued Result of the measurement.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit.QueuedProgramRun.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">measurement</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queued_circuits</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun" title="qoqo_qiskit.backend.queued_results.QueuedCircuitRun"><span class="pre">QueuedCircuitRun</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/qoqo_qiskit/backend/queued_results.html#QueuedProgramRun.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit.QueuedProgramRun.__init__" title="Link to this definition"></a></dt>
+<dd><p>Initialise the QueuedProgramRun class.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>measurement</strong> (<em>qoqo.measurements</em>) -- The qoqo Measurement to run.</p></li>
+<li><p><strong>queued_circuits</strong> (<em>List</em><em>[</em><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun" title="qoqo_qiskit.QueuedCircuitRun"><em>QueuedCircuitRun</em></a><em>]</em>) -- The list of associated queued circuits.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> -- The measurement type is unknown.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#qoqo_qiskit.QueuedProgramRun.__init__" title="qoqo_qiskit.QueuedProgramRun.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(measurement, queued_circuits)</p></td>
+<td><p>Initialise the QueuedProgramRun class.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.from_json" title="qoqo_qiskit.QueuedProgramRun.from_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">from_json</span></code></a>(string)</p></td>
+<td><p>Convert a JSON string to an instance of QueuedProgramRun.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.poll_result" title="qoqo_qiskit.QueuedProgramRun.poll_result"><code class="xref py py-obj docutils literal notranslate"><span class="pre">poll_result</span></code></a>()</p></td>
+<td><p>Poll the result.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.to_json" title="qoqo_qiskit.QueuedProgramRun.to_json"><code class="xref py py-obj docutils literal notranslate"><span class="pre">to_json</span></code></a>()</p></td>
+<td><p>Convert self to a JSON string.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit.QueuedProgramRun.from_json">
+<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">string</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun" title="qoqo_qiskit.backend.queued_results.QueuedProgramRun"><span class="pre">QueuedProgramRun</span></a></span></span><a class="reference internal" href="../../_modules/qoqo_qiskit/backend/queued_results.html#QueuedProgramRun.from_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit.QueuedProgramRun.from_json" title="Link to this definition"></a></dt>
+<dd><p>Convert a JSON string to an instance of QueuedProgramRun.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>string</strong> (<em>str</em>) -- JSON string to convert.</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>TypeError</strong> -- The measurement type is unknown.</p>
+</dd>
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The converted instance.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference internal" href="../qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun" title="qoqo_qiskit.QueuedProgramRun">QueuedProgramRun</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit.QueuedProgramRun.poll_result">
+<span class="sig-name descname"><span class="pre">poll_result</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">bool</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">Dict</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">complex</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span></span><a class="reference internal" href="../../_modules/qoqo_qiskit/backend/queued_results.html#QueuedProgramRun.poll_result"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit.QueuedProgramRun.poll_result" title="Link to this definition"></a></dt>
+<dd><p>Poll the result.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><dl class="simple">
+<dt>Union[Tuple[Dict[str, List[List[bool]]],</dt><dd><p>Dict[str, List[List[float]]],
+Dict[str, List[List[complex]]]]]: Result if all runs were successful.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Raises<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>RuntimeError</strong> -- The jobs failed or were cancelled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="qoqo_qiskit.QueuedProgramRun.to_json">
+<span class="sig-name descname"><span class="pre">to_json</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../../_modules/qoqo_qiskit/backend/queued_results.html#QueuedProgramRun.to_json"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#qoqo_qiskit.QueuedProgramRun.to_json" title="Link to this definition"></a></dt>
+<dd><p>Convert self to a JSON string.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>self as a JSON string.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+<dt class="field-odd">Raises<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>TypeError</strong> -- The measurement type is unknown.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="qoqo_qiskit.QueuedCircuitRun.html" class="btn btn-neutral float-left" title="qoqo_qiskit.QueuedCircuitRun" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, HQS Quantum Simulations GmbH.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

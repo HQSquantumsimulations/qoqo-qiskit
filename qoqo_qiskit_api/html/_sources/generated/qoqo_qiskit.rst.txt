@@ -24,6 +24,8 @@
    .. autosummary::
    
       QoqoQiskitBackend
+      QueuedCircuitRun
+      QueuedProgramRun
    
    
 

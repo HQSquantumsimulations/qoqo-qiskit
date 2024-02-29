@@ -1,0 +1,25 @@
+qoqo\_qiskit.QueuedProgramRun
+=============================
+
+.. currentmodule:: qoqo_qiskit
+
+.. autoclass:: QueuedProgramRun
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~QueuedProgramRun.__init__
+      ~QueuedProgramRun.from_json
+      ~QueuedProgramRun.poll_result
+      ~QueuedProgramRun.to_json
+   
+   
+
+   
+   
+   

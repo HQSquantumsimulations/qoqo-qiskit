@@ -1,0 +1,25 @@
+qoqo\_qiskit.QueuedCircuitRun
+=============================
+
+.. currentmodule:: qoqo_qiskit
+
+.. autoclass:: QueuedCircuitRun
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~QueuedCircuitRun.__init__
+      ~QueuedCircuitRun.from_json
+      ~QueuedCircuitRun.poll_result
+      ~QueuedCircuitRun.to_json
+   
+   
+
+   
+   
+   
