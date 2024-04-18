@@ -19,6 +19,8 @@ qoqo\_qiskit.QoqoQiskitBackend
       ~QoqoQiskitBackend.run_measurement
       ~QoqoQiskitBackend.run_measurement_queued
       ~QoqoQiskitBackend.run_measurement_registers
+      ~QoqoQiskitBackend.run_program
+      ~QoqoQiskitBackend.run_program_queued
    
    
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.3.0 documentation</title>
+  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.4.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
 
@@ -14,8 +14,8 @@
   
         <script src="../../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=8f8119fe"></script>
-        <script src="../../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../../_static/documentation_options.js?v=22974a12"></script>
+        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
@@ -35,7 +35,7 @@
             qoqo_qiskit
           </a>
               <div class="version">
-                0.3.0
+                0.4.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
@@ -87,13 +87,14 @@
 <span class="c1"># the License.</span>
 <span class="sd">&quot;&quot;&quot;Qoqo-qiskit backend for simulation purposes.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">cast</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span><span class="p">,</span> <span class="n">cast</span>
 
 <span class="kn">from</span> <span class="nn">qiskit</span> <span class="kn">import</span> <span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">execute</span>
 <span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="kn">import</span> <span class="n">Backend</span>
 <span class="kn">from</span> <span class="nn">qiskit.providers.job</span> <span class="kn">import</span> <span class="n">Job</span>
 <span class="kn">from</span> <span class="nn">qiskit_aer</span> <span class="kn">import</span> <span class="n">AerSimulator</span>
-<span class="kn">from</span> <span class="nn">qoqo</span> <span class="kn">import</span> <span class="n">Circuit</span>
+<span class="kn">from</span> <span class="nn">qoqo</span> <span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">QuantumProgram</span>
+<span class="kn">from</span> <span class="nn">qoqo.measurements</span> <span class="kn">import</span> <span class="n">ClassicalRegister</span>  <span class="c1"># type:ignore</span>
 
 <span class="kn">from</span> <span class="nn">qoqo_qiskit.backend.queued_results</span> <span class="kn">import</span> <span class="n">QueuedCircuitRun</span><span class="p">,</span> <span class="n">QueuedProgramRun</span>
 <span class="kn">from</span> <span class="nn">qoqo_qiskit.interface</span> <span class="kn">import</span> <span class="n">to_qiskit_circuit</span>
@@ -465,6 +466,66 @@
         <span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="QoqoQiskitBackend.run_program">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend.run_program">[docs]</a>
+    <span class="k">def</span> <span class="nf">run_program</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span> <span class="n">QuantumProgram</span><span class="p">,</span> <span class="n">params_values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
+        <span class="n">List</span><span class="p">[</span>
+            <span class="n">Union</span><span class="p">[</span>
+                <span class="n">Tuple</span><span class="p">[</span>
+                    <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">bool</span><span class="p">]]],</span>
+                    <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]],</span>
+                    <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]]],</span>
+                <span class="p">],</span>
+                <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
+            <span class="p">]</span>
+        <span class="p">]</span>
+    <span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run a qoqo quantum program on an IBM backend multiple times.</span>
+
+<span class="sd">        It can handle QuantumProgram instances containing any kind of measurement. The list of</span>
+<span class="sd">        lists of parameters will be used to call `program.run(self, params)` or</span>
+<span class="sd">        `program.run_registers(self, params)` as many times as the number of sublists.</span>
+<span class="sd">        The return type will change accordingly.</span>
+
+<span class="sd">        If no parameters values are provided, a normal call `program.run(self, [])` call</span>
+<span class="sd">        will be executed.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            program (QuantumProgram): the qoqo quantum program to run.</span>
+<span class="sd">            params_values (List[List[float]]): the parameters values to pass to the quantum</span>
+<span class="sd">                program.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            Optional[</span>
+<span class="sd">                List[</span>
+<span class="sd">                    Union[</span>
+<span class="sd">                        Tuple[</span>
+<span class="sd">                            Dict[str, List[List[bool]]],</span>
+<span class="sd">                            Dict[str, List[List[float]]],</span>
+<span class="sd">                            Dict[str, List[List[complex]]],</span>
+<span class="sd">                        ],</span>
+<span class="sd">                        Dict[str, float],</span>
+<span class="sd">                    ]</span>
+<span class="sd">                ]</span>
+<span class="sd">            ]: list of dictionaries (or tuples of dictionaries) containing the</span>
+<span class="sd">                run results.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">returned_results</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">(),</span> <span class="n">ClassicalRegister</span><span class="p">):</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">params_values</span><span class="p">:</span>
+                <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run_registers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[]))</span>
+            <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
+                <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run_registers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">params_values</span><span class="p">:</span>
+                <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[]))</span>
+            <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
+                <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">returned_results</span></div>
+
+
 <div class="viewcode-block" id="QoqoQiskitBackend.run_measurement_queued">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend.run_measurement_queued">[docs]</a>
     <span class="k">def</span> <span class="nf">run_measurement_queued</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="p">:</span> <span class="n">Any</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedProgramRun</span><span class="p">:</span>
@@ -492,6 +553,53 @@
 
             <span class="n">queued_circuits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_circuit_queued</span><span class="p">(</span><span class="n">run_circuit</span><span class="p">))</span>
         <span class="k">return</span> <span class="n">QueuedProgramRun</span><span class="p">(</span><span class="n">measurement</span><span class="p">,</span> <span class="n">queued_circuits</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="QoqoQiskitBackend.run_program_queued">
+<a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend.run_program_queued">[docs]</a>
+    <span class="k">def</span> <span class="nf">run_program_queued</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span> <span class="n">QuantumProgram</span><span class="p">,</span> <span class="n">params_values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedProgramRun</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Run a qoqo quantum program on a AWS backend multiple times return a list of queued Jobs.</span>
+
+<span class="sd">        This effectively performs the same operations as `run_program` but returns</span>
+<span class="sd">        queued results.</span>
+
+
+<span class="sd">        Args:</span>
+<span class="sd">            program (QuantumProgram): the qoqo quantum program to run.</span>
+<span class="sd">            params_values (List[List[float]]): the parameters values to pass to the quantum</span>
+<span class="sd">                program.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: incorrect length of params_values compared to program&#39;s input</span>
+<span class="sd">                parameter names.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            List[QueuedProgramRun]]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">queued_runs</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedProgramRun</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">input_parameter_names</span> <span class="o">=</span> <span class="n">program</span><span class="o">.</span><span class="n">input_parameter_names</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">params_values</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">input_parameter_names</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="s2">&quot;Wrong parameters value: no parameters values provided but&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot; input QuantumProgram has </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="s2">&quot; input parameter names.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">queued_runs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_measurement_queued</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">()))</span>
+        <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">):</span>
+                <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Wrong number of parameters </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot; expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters given.&quot;</span>
+                <span class="p">)</span>
+            <span class="n">substituted_parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+            <span class="n">measurement</span> <span class="o">=</span> <span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">()</span><span class="o">.</span><span class="n">substitute_parameters</span><span class="p">(</span><span class="n">substituted_parameters</span><span class="p">)</span>
+            <span class="n">queued_runs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_measurement_queued</span><span class="p">(</span><span class="n">measurement</span><span class="p">))</span>
+
+        <span class="k">return</span> <span class="n">queued_runs</span></div>
 </div>
 
 </pre></div>
