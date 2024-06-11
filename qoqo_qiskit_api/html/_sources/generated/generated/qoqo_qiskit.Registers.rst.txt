@@ -1,0 +1,30 @@
+qoqo\_qiskit.Registers
+======================
+
+.. currentmodule:: qoqo_qiskit
+
+.. autoclass:: Registers
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~Registers.__init__
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~Registers.bit_register_dict
+      ~Registers.float_register_dict
+      ~Registers.complex_register_dict
+   
+   

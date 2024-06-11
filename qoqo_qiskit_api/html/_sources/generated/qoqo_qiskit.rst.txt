@@ -26,6 +26,8 @@
       QoqoQiskitBackend
       QueuedCircuitRun
       QueuedProgramRun
+      Registers
+      RegistersWithLengths
    
    
 

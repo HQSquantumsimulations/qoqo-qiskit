@@ -1,0 +1,30 @@
+qoqo\_qiskit.RegistersWithLengths
+=================================
+
+.. currentmodule:: qoqo_qiskit
+
+.. autoclass:: RegistersWithLengths
+
+   
+   .. automethod:: __init__
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+   
+      ~RegistersWithLengths.__init__
+      ~RegistersWithLengths.to_flat_tuple
+   
+   
+
+   
+   
+   .. rubric:: Attributes
+
+   .. autosummary::
+   
+      ~RegistersWithLengths.registers
+      ~RegistersWithLengths.clas_regs_lengths
+   
+   
