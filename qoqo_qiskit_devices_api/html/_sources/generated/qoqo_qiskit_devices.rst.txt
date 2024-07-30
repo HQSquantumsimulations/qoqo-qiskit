@@ -4,11 +4,6 @@
 .. automodule:: qoqo_qiskit_devices
 
    
-   
-   
-
-   
-   
    .. rubric:: Functions
 
    .. autosummary::
@@ -17,15 +12,3 @@
       get_noise_models
       set_qiskit_device_information
    
-   
-
-   
-   
-   
-
-   
-   
-   
-
-
-

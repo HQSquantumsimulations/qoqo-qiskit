@@ -4,20 +4,11 @@
 .. automodule:: qoqo_qiskit
 
    
-   
-   
-
-   
-   
    .. rubric:: Functions
 
    .. autosummary::
    
       to_qiskit_circuit
-   
-   
-
-   
    
    .. rubric:: Classes
 
@@ -29,11 +20,3 @@
       Registers
       RegistersWithLengths
    
-   
-
-   
-   
-   
-
-
-

@@ -4,20 +4,11 @@ qoqo\_qiskit\_devices.devices
 .. automodule:: qoqo_qiskit_devices.devices
 
    
-   
-   
-
-   
-   
    .. rubric:: Functions
 
    .. autosummary::
    
       qoqo_qiskit_device_from_ibmq_identifier
-   
-   
-
-   
    
    .. rubric:: Classes
 
@@ -32,11 +23,3 @@ qoqo\_qiskit\_devices.devices
       IBMPerthDevice
       IBMQuitoDevice
    
-   
-
-   
-   
-   
-
-
-
