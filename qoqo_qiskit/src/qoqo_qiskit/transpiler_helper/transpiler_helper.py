@@ -30,7 +30,7 @@ def transpile_with_qiskit(
     """Use qiskit transpilers to transpile a qoqo circuit.
 
     For more details about the arguments, see:
-    https://docs.quantum.ibm.com/api/qiskit/0.24/qiskit.compiler.transpile
+    https://docs.quantum.ibm.com/api/qiskit/compiler#transpile
 
     Args:
         circuits (Union[Circuit, List[Circuit]]): qoqo circuit(s) to transpile.
@@ -94,7 +94,7 @@ def transpile_program_with_qiskit(
     """Use qiskit transpilers to transpile a QuantumProgram.
 
     For more details about the arguments, see:
-    https://docs.quantum.ibm.com/api/qiskit/0.24/qiskit.compiler.transpile
+    https://docs.quantum.ibm.com/api/qiskit/compiler#transpile
 
     Args:
         quantum_program (QuantumProgram): QuantumProgram to transpile.
