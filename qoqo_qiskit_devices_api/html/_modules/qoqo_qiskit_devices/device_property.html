@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.7.0 documentation</title>
+  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.8.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
 
@@ -14,7 +14,7 @@
   
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../_static/documentation_options.js?v=a7c2b583"></script>
+        <script src="../../_static/documentation_options.js?v=5a53be95"></script>
         <script src="../../_static/doctools.js?v=9a2dae69"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
         <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -35,7 +35,7 @@
             qoqo_qiskit_devices
           </a>
               <div class="version">
-                0.7.0
+                0.8.0
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
@@ -92,7 +92,7 @@
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 
-<span class="kn">from</span> <span class="nn">qiskit_ibm_provider</span> <span class="kn">import</span> <span class="n">IBMProvider</span>
+<span class="kn">from</span> <span class="nn">qiskit_ibm_runtime</span> <span class="kn">import</span> <span class="n">QiskitRuntimeService</span>
 <span class="kn">from</span> <span class="nn">qoqo</span> <span class="kn">import</span> <span class="n">noise_models</span>
 <span class="kn">from</span> <span class="nn">struqture_py</span> <span class="kn">import</span> <span class="n">spins</span>
 
@@ -127,7 +127,7 @@
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets a qoqo_qiskit_devices.ibm_devices instance noise info.</span>
 
-<span class="sd">    Obtains the device info from qiskit&#39;s IBMProvider and performs the following updates:</span>
+<span class="sd">    Obtains the device info from qiskit&#39;s QiskitRuntimeService and performs the following updates:</span>
 <span class="sd">        - sets single qubit gate times</span>
 <span class="sd">        - sets two qubit gate times</span>
 
@@ -142,7 +142,7 @@
     <span class="k">if</span> <span class="n">get_mocked_information</span><span class="p">:</span>
         <span class="n">properties</span> <span class="o">=</span> <span class="n">MockedProperties</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">properties</span> <span class="o">=</span> <span class="n">IBMProvider</span><span class="p">()</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">QiskitRuntimeService</span><span class="p">()</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">name</span><span class="p">)</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
 
     <span class="k">for</span> <span class="n">qubit</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">number_qubits</span><span class="p">()):</span>
         <span class="k">for</span> <span class="n">gate</span> <span class="ow">in</span> <span class="n">device</span><span class="o">.</span><span class="n">single_qubit_gate_names</span><span class="p">():</span>
@@ -205,7 +205,7 @@
     <span class="k">if</span> <span class="n">get_mocked_information</span><span class="p">:</span>
         <span class="n">properties</span> <span class="o">=</span> <span class="n">MockedProperties</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">properties</span> <span class="o">=</span> <span class="n">IBMProvider</span><span class="p">()</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">QiskitRuntimeService</span><span class="p">()</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
     <span class="n">warn</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">operators</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
     <span class="n">rate_factors</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
@@ -309,7 +309,7 @@
     <span class="k">if</span> <span class="n">get_mocked_information</span><span class="p">:</span>
         <span class="n">properties</span> <span class="o">=</span> <span class="n">MockedProperties</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">properties</span> <span class="o">=</span> <span class="n">IBMProvider</span><span class="p">()</span><span class="o">.</span><span class="n">get_backend</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="n">QiskitRuntimeService</span><span class="p">()</span><span class="o">.</span><span class="n">backend</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">name</span><span class="p">())</span><span class="o">.</span><span class="n">properties</span><span class="p">()</span>
     <span class="n">warn</span> <span class="o">=</span> <span class="kc">False</span>
     <span class="n">operators</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;+&quot;</span><span class="p">,</span> <span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
     <span class="n">rate_factors</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">]</span>
