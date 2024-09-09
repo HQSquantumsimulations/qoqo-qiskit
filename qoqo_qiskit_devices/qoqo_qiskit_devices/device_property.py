@@ -133,9 +133,9 @@ def get_decoherence_on_gate_model(
         for gate in ["SqrtPauliX", "PauliX"]:
             qiskit_gate = _qiskit_gate_equivalent(gate)
             gate_error = properties.gate_error(qiskit_gate, ii)
-            gate_time = properties.gate_property(gate=qiskit_gate, qubits=ii, name="gate_length")[
-                0
-            ]
+            gate_time = properties.gate_property(
+                gate=qiskit_gate, qubits=ii, name="gate_length"
+            )[0]
             depol_rate = gate_error / gate_time
             depol_rates = [factor * depol_rate for factor in rate_factors]
 
@@ -144,7 +144,9 @@ def get_decoherence_on_gate_model(
                 dp = spins.PlusMinusProduct().from_string(f"{ii}{op}")
                 lindblad_noise.add_operator_product((dp, dp), rate)
 
-            noise_model = noise_model.set_single_qubit_gate_error(gate, ii, lindblad_noise)
+            noise_model = noise_model.set_single_qubit_gate_error(
+                gate, ii, lindblad_noise
+            )
 
     for gate in device.two_qubit_gate_names():
         qiskit_gate = _qiskit_gate_equivalent(gate)
@@ -163,7 +165,9 @@ def get_decoherence_on_gate_model(
                         dp = spins.PlusMinusProduct().from_string(f"{kk}{op}")
                         lindblad_noise.add_operator_product((dp, dp), rate)
 
-                noise_model = noise_model.set_two_qubit_gate_error(gate, ii, jj, lindblad_noise)
+                noise_model = noise_model.set_two_qubit_gate_error(
+                    gate, ii, jj, lindblad_noise
+                )
 
     for ii in range(number_qubits):
         damping = 1 / properties.t1(qubit=ii)
@@ -174,12 +178,16 @@ def get_decoherence_on_gate_model(
         lindblad_noise = spins.PlusMinusLindbladNoiseOperator()
         dp = spins.PlusMinusProduct().from_string(f"{ii}Z")
         lindblad_noise.add_operator_product((dp, dp), dephasing)
-        noise_model = noise_model.set_single_qubit_gate_error("Identity", ii, lindblad_noise)
+        noise_model = noise_model.set_single_qubit_gate_error(
+            "Identity", ii, lindblad_noise
+        )
 
         lindblad_noise = spins.PlusMinusLindbladNoiseOperator()
         dp = spins.PlusMinusProduct().from_string(f"{ii}+")
         lindblad_noise.add_operator_product((dp, dp), damping)
-        noise_model = noise_model.set_single_qubit_gate_error("Identity", ii, lindblad_noise)
+        noise_model = noise_model.set_single_qubit_gate_error(
+            "Identity", ii, lindblad_noise
+        )
 
     if warn:
         warnings.warn(
@@ -192,7 +200,9 @@ def get_decoherence_on_gate_model(
 
 def get_noise_models(
     device: types.ModuleType, get_mocked_information: bool = False
-) -> Tuple[noise_models.ContinuousDecoherenceModel, noise_models.DecoherenceOnGateModel]:
+) -> Tuple[
+    noise_models.ContinuousDecoherenceModel, noise_models.DecoherenceOnGateModel
+]:
     """Get the ContinuousDecoherenceModel and DecoherenceOnGateModel qoqo noise models of an IBMDevice.
 
     The paper that relates the gate fidelity to single-qubit damping + dephasing noise
@@ -224,9 +234,9 @@ def get_noise_models(
         for gate in ["SqrtPauliX", "PauliX"]:
             qiskit_gate = _qiskit_gate_equivalent(gate)
             gate_error = properties.gate_error(qiskit_gate, ii)
-            gate_time = properties.gate_property(gate=qiskit_gate, qubits=ii, name="gate_length")[
-                0
-            ]
+            gate_time = properties.gate_property(
+                gate=qiskit_gate, qubits=ii, name="gate_length"
+            )[0]
             depol_rate = gate_error / gate_time
             depol_rates = [factor * depol_rate for factor in rate_factors]
 
@@ -265,7 +275,9 @@ def get_noise_models(
         dephasing = 1 / properties.t2(qubit=ii) - 1 / (2 * properties.t1(qubit=ii))
         if dephasing < 0:
             warn = True
-        continuous_decoherence = continuous_decoherence.add_dephasing_rate([ii], dephasing)
+        continuous_decoherence = continuous_decoherence.add_dephasing_rate(
+            [ii], dephasing
+        )
         continuous_decoherence = continuous_decoherence.add_damping_rate([ii], damping)
 
     if warn:

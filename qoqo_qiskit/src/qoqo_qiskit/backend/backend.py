@@ -58,9 +58,11 @@ class QoqoQiskitBackend:
         self.compilation = compilation
 
     # Internal _run_circuit method
-    def _run_circuit(
-        self, circuit: Circuit
-    ) -> Tuple[Job, str, RegistersWithLengths,]:
+    def _run_circuit(self, circuit: Circuit) -> Tuple[
+        Job,
+        str,
+        RegistersWithLengths,
+    ]:
         if not circuit.__class__.__name__ == "Circuit":
             raise TypeError("The input is not a valid Qoqo Circuit instance.")
 
@@ -436,9 +438,7 @@ class QoqoQiskitBackend:
             output_complex_register_dict,
         )
 
-    def run_program(
-        self, program: QuantumProgram, params_values: List[List[float]]
-    ) -> Optional[
+    def run_program(self, program: QuantumProgram, params_values: List[List[float]]) -> Optional[
         List[
             Union[
                 Tuple[
