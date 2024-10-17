@@ -25,6 +25,8 @@ qoqo\_qiskit.RegistersWithLengths
    .. autosummary::
    
       ~RegistersWithLengths.registers
-      ~RegistersWithLengths.clas_regs_lengths
+      ~RegistersWithLengths.bit_regs_lengths
+      ~RegistersWithLengths.float_regs_lengths
+      ~RegistersWithLengths.complex_regs_lengths
    
    

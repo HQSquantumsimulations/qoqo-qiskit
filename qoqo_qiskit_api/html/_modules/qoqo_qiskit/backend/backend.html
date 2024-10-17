@@ -1,23 +1,21 @@
+
+
 <!DOCTYPE html>
 <html class="writer-html5" lang="English" data-content_root="../../../">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.8.0 documentation</title>
+  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.8.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
-  
-        <script src="../../../_static/jquery.js?v=5d32c60e"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="../../../_static/documentation_options.js?v=5a53be95"></script>
-        <script src="../../../_static/doctools.js?v=9a2dae69"></script>
-        <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=c5112a0f"></script>
+      <script src="../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -34,9 +32,6 @@
           <a href="../../../index.html" class="icon icon-home">
             qoqo_qiskit
           </a>
-              <div class="version">
-                0.8.0
-              </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
@@ -139,17 +134,15 @@
 
 
     <span class="c1"># Internal _run_circuit method</span>
-    <span class="k">def</span> <span class="nf">_run_circuit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span>
-        <span class="n">Job</span><span class="p">,</span>
-        <span class="nb">str</span><span class="p">,</span>
-        <span class="n">RegistersWithLengths</span><span class="p">,</span>
-    <span class="p">]:</span>
+    <span class="k">def</span> <span class="nf">_run_circuit</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Job</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">RegistersWithLengths</span><span class="p">,</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]]:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">circuit</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;Circuit&quot;</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The input is not a valid Qoqo Circuit instance.&quot;</span><span class="p">)</span>
 
         <span class="n">output_registers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_registers</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
-        <span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">run_options</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">run_options</span><span class="p">,</span> <span class="n">input_bit_circuit</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_handle_errors</span><span class="p">(</span><span class="n">run_options</span><span class="p">)</span>
 
@@ -157,24 +150,25 @@
 
         <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_execution</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">shots</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="p">,</span> <span class="n">input_bit_circuit</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_run_circuit_list</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span> <span class="n">circuit_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Job</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">RegistersWithLengths</span><span class="p">]]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Job</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">RegistersWithLengths</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]]]:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">circuit_list</span><span class="p">,</span> <span class="n">List</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;The input is not a valid list of Qoqo Circuit instances.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">circuit_list</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;The input is an empty list of Qoqo Circuit instances.&quot;</span><span class="p">)</span>
 
         <span class="n">compiled_circuits_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">input_bit_circuits_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Optional</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">output_registers_list</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">RegistersWithLengths</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="n">sim_type_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">shots_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="k">for</span> <span class="n">circuit</span> <span class="ow">in</span> <span class="n">circuit_list</span><span class="p">:</span>
             <span class="n">output_registers</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_set_up_registers</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
-            <span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">run_options</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+            <span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">run_options</span><span class="p">,</span> <span class="n">input_bit_circuit</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compile_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
             <span class="bp">self</span><span class="o">.</span><span class="n">_handle_errors</span><span class="p">(</span><span class="n">run_options</span><span class="p">)</span>
 
@@ -197,11 +191,12 @@
                     <span class="p">)</span>
 
             <span class="n">compiled_circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">)</span>
+            <span class="n">input_bit_circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_bit_circuit</span><span class="p">)</span>
             <span class="n">output_registers_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_registers</span><span class="p">)</span>
 
         <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_execution</span><span class="p">(</span><span class="n">compiled_circuits_list</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">shots_list</span><span class="p">))</span>
 
-        <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">sim_type_list</span><span class="p">),</span> <span class="n">output_registers_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">sim_type_list</span><span class="p">),</span> <span class="n">output_registers_list</span><span class="p">,</span> <span class="n">input_bit_circuits_list</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">_set_up_registers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -210,15 +205,17 @@
         <span class="n">output_registers</span> <span class="o">=</span> <span class="n">RegistersWithLengths</span><span class="p">()</span>
 
         <span class="k">for</span> <span class="n">bit_def</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="s2">&quot;DefinitionBit&quot;</span><span class="p">):</span>
-            <span class="n">output_registers</span><span class="o">.</span><span class="n">clas_regs_lengths</span><span class="p">[</span><span class="n">bit_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">bit_def</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
+            <span class="n">output_registers</span><span class="o">.</span><span class="n">bit_regs_lengths</span><span class="p">[</span><span class="n">bit_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">bit_def</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">bit_def</span><span class="o">.</span><span class="n">is_output</span><span class="p">():</span>
                 <span class="n">output_registers</span><span class="o">.</span><span class="n">registers</span><span class="o">.</span><span class="n">bit_register_dict</span><span class="p">[</span><span class="n">bit_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">float_def</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="s2">&quot;DefinitionFloat&quot;</span><span class="p">):</span>
+            <span class="n">output_registers</span><span class="o">.</span><span class="n">float_regs_lengths</span><span class="p">[</span><span class="n">float_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">float_def</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">float_def</span><span class="o">.</span><span class="n">is_output</span><span class="p">():</span>
                 <span class="n">output_registers</span><span class="o">.</span><span class="n">registers</span><span class="o">.</span><span class="n">float_register_dict</span><span class="p">[</span><span class="n">float_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
                     <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="p">[]</span>
                 <span class="p">)</span>
         <span class="k">for</span> <span class="n">complex_def</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="s2">&quot;DefinitionComplex&quot;</span><span class="p">):</span>
+            <span class="n">output_registers</span><span class="o">.</span><span class="n">complex_regs_lengths</span><span class="p">[</span><span class="n">complex_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">complex_def</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">complex_def</span><span class="o">.</span><span class="n">is_output</span><span class="p">():</span>
                 <span class="n">output_registers</span><span class="o">.</span><span class="n">registers</span><span class="o">.</span><span class="n">complex_register_dict</span><span class="p">[</span><span class="n">complex_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
                     <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]],</span> <span class="p">[]</span>
@@ -228,7 +225,18 @@
     <span class="k">def</span> <span class="nf">_compile_circuit</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">circuit</span><span class="p">:</span> <span class="n">Circuit</span><span class="p">,</span>
-    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]:</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">QuantumCircuit</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]]:</span>
+        <span class="n">input_bit_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+        <span class="n">tmp_circuit</span> <span class="o">=</span> <span class="n">Circuit</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">circuit</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">hqslang</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;InputBit&quot;</span><span class="p">:</span>
+                <span class="n">input_bit_circuit</span> <span class="o">+=</span> <span class="n">c</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">tmp_circuit</span> <span class="o">+=</span> <span class="n">c</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_bit_circuit</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">input_bit_circuit</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">circuit</span> <span class="o">=</span> <span class="n">tmp_circuit</span>
+
         <span class="k">try</span><span class="p">:</span>
             <span class="n">defs</span> <span class="o">=</span> <span class="n">circuit</span><span class="o">.</span><span class="n">definitions</span><span class="p">()</span>
             <span class="n">doubles</span> <span class="o">=</span> <span class="p">[</span><span class="n">defs</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span>
@@ -249,7 +257,7 @@
         <span class="n">compiled_circuit</span><span class="p">:</span> <span class="n">QuantumCircuit</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
         <span class="n">run_options</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="n">res</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-        <span class="k">return</span> <span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">run_options</span>
+        <span class="k">return</span> <span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">run_options</span><span class="p">,</span> <span class="n">input_bit_circuit</span>
 
     <span class="k">def</span> <span class="nf">_handle_errors</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -342,7 +350,7 @@
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: Incorrect Measurement or Pragma operations.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="p">,</span> <span class="n">input_bit_circuit</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 
@@ -352,6 +360,7 @@
             <span class="n">sim_type</span><span class="p">,</span>
             <span class="n">result</span><span class="p">,</span>
             <span class="n">output_registers</span><span class="p">,</span>
+            <span class="n">input_bit_circuit</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 
@@ -385,7 +394,9 @@
 <span class="sd">            ValueError: Incorrect Measurement or Pragma operations or incompatible run options\</span>
 <span class="sd">                between different circuits.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers_list</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit_list</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers_list</span><span class="p">,</span> <span class="n">input_bit_circuits_list</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit_list</span><span class="p">(</span>
+            <span class="n">circuits</span>
+        <span class="p">)</span>
 
         <span class="n">result</span> <span class="o">=</span> <span class="n">job</span><span class="o">.</span><span class="n">result</span><span class="p">()</span>
 
@@ -395,6 +406,7 @@
             <span class="n">sim_type</span><span class="p">,</span>
             <span class="n">result</span><span class="p">,</span>
             <span class="n">output_registers_list</span><span class="p">,</span>
+            <span class="n">input_bit_circuits_list</span><span class="p">,</span>
         <span class="p">)</span></div>
 
 
@@ -418,11 +430,7 @@
 <span class="sd">        Returns:</span>
 <span class="sd">            QueuedCircuitRun</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="p">(</span>
-            <span class="n">job</span><span class="p">,</span>
-            <span class="n">sim_type</span><span class="p">,</span>
-            <span class="n">output_registers</span><span class="p">,</span>
-        <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
+        <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="p">,</span> <span class="n">_input_bit_circuit</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit</span><span class="p">(</span><span class="n">circuit</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">QueuedCircuitRun</span><span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="o">.</span><span class="n">to_flat_tuple</span><span class="p">())</span></div>
 
@@ -448,6 +456,7 @@
             <span class="n">job</span><span class="p">,</span>
             <span class="n">sim_type</span><span class="p">,</span>
             <span class="n">output_registers</span><span class="p">,</span>
+            <span class="n">_input_bit_circuits_list</span><span class="p">,</span>
         <span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_run_circuit_list</span><span class="p">(</span><span class="n">circuits</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="p">[</span>
@@ -539,7 +548,9 @@
 
 <div class="viewcode-block" id="QoqoQiskitBackend.run_program">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend.run_program">[docs]</a>
-    <span class="k">def</span> <span class="nf">run_program</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span> <span class="n">QuantumProgram</span><span class="p">,</span> <span class="n">params_values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]])</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
+    <span class="k">def</span> <span class="nf">run_program</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span> <span class="n">QuantumProgram</span><span class="p">,</span> <span class="n">params_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
         <span class="n">List</span><span class="p">[</span>
             <span class="n">Union</span><span class="p">[</span>
                 <span class="n">Tuple</span><span class="p">[</span>
@@ -563,8 +574,8 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            program (QuantumProgram): the qoqo quantum program to run.</span>
-<span class="sd">            params_values (List[List[float]]): the parameters values to pass to the quantum</span>
-<span class="sd">                program.</span>
+<span class="sd">            params_values (Union[List[float], List[List[float]]]): the parameters values to pass</span>
+<span class="sd">                to the quantum program.</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            Optional[</span>
@@ -586,13 +597,19 @@
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">(),</span> <span class="n">ClassicalRegister</span><span class="p">):</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">params_values</span><span class="p">:</span>
                 <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run_registers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[]))</span>
-            <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
-                <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run_registers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
+                    <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run_registers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">program</span><span class="o">.</span><span class="n">run_registers</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_values</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="n">params_values</span><span class="p">:</span>
                 <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="p">[]))</span>
-            <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
-                <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
+                    <span class="n">returned_results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">program</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">params_values</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="n">returned_results</span></div>
 
@@ -629,7 +646,7 @@
 <div class="viewcode-block" id="QoqoQiskitBackend.run_program_queued">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QoqoQiskitBackend.run_program_queued">[docs]</a>
     <span class="k">def</span> <span class="nf">run_program_queued</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span> <span class="n">QuantumProgram</span><span class="p">,</span> <span class="n">params_values</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">program</span><span class="p">:</span> <span class="n">QuantumProgram</span><span class="p">,</span> <span class="n">params_values</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">],</span> <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]]]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedProgramRun</span><span class="p">]:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Run a qoqo quantum program on a AWS backend multiple times return a list of queued Jobs.</span>
 
@@ -639,8 +656,8 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            program (QuantumProgram): the qoqo quantum program to run.</span>
-<span class="sd">            params_values (List[List[float]]): the parameters values to pass to the quantum</span>
-<span class="sd">                program.</span>
+<span class="sd">            params_values (Union[List[float], List[List[float]]]): the parameters values to pass</span>
+<span class="sd">                to the quantum program.</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            ValueError: incorrect length of params_values compared to program&#39;s input</span>
@@ -660,13 +677,24 @@
                     <span class="s2">&quot; input parameter names.&quot;</span>
                 <span class="p">)</span>
             <span class="n">queued_runs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_measurement_queued</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">()))</span>
-        <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">):</span>
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">params_values</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">params_values</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;Wrong number of parameters </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters&quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot; expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters given.&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">substituted_parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+                <span class="n">measurement</span> <span class="o">=</span> <span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">()</span><span class="o">.</span><span class="n">substitute_parameters</span><span class="p">(</span><span class="n">substituted_parameters</span><span class="p">)</span>
+                <span class="n">queued_runs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_measurement_queued</span><span class="p">(</span><span class="n">measurement</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params_values</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">):</span>
                 <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                     <span class="sa">f</span><span class="s2">&quot;Wrong number of parameters </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters&quot;</span>
-                    <span class="sa">f</span><span class="s2">&quot; expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters given.&quot;</span>
+                    <span class="sa">f</span><span class="s2">&quot; expected </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">params_values</span><span class="p">)</span><span class="si">}</span><span class="s2"> parameters given.&quot;</span>
                 <span class="p">)</span>
-            <span class="n">substituted_parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">,</span> <span class="n">params</span><span class="p">))</span>
+            <span class="n">substituted_parameters</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">,</span> <span class="n">params_values</span><span class="p">))</span>
             <span class="n">measurement</span> <span class="o">=</span> <span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">()</span><span class="o">.</span><span class="n">substitute_parameters</span><span class="p">(</span><span class="n">substituted_parameters</span><span class="p">)</span>
             <span class="n">queued_runs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_measurement_queued</span><span class="p">(</span><span class="n">measurement</span><span class="p">))</span>
 
