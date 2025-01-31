@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.backend.queued_results &mdash; qoqo_qiskit 0.8.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+  <title>qoqo_qiskit.backend.queued_results &mdash; qoqo_qiskit 0.9.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=c5112a0f"></script>
+      <script src="../../../_static/documentation_options.js?v=269f141a"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -69,7 +69,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for qoqo_qiskit.backend.queued_results</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright © 2024 HQS Quantum Simulations GmbH.</span>
+<span></span><span class="c1"># Copyright © 2024-2025 HQS Quantum Simulations GmbH.</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
 <span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
@@ -82,28 +82,28 @@
 <span class="c1"># the License.</span>
 <span class="sd">&quot;&quot;&quot;Queued Jobs.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">__future__</span><span class="w"> </span><span class="kn">import</span> <span class="n">annotations</span>
 
-<span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">,</span> <span class="n">Union</span>
 
-<span class="kn">from</span> <span class="nn">qiskit.providers</span> <span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">JobStatus</span>
-<span class="kn">from</span> <span class="nn">qiskit_ibm_runtime</span> <span class="kn">import</span> <span class="n">QiskitRuntimeService</span>
-<span class="kn">from</span> <span class="nn">qoqo</span> <span class="kn">import</span> <span class="n">measurements</span>  <span class="c1"># type:ignore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.providers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Job</span><span class="p">,</span> <span class="n">JobStatus</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit_ibm_runtime</span><span class="w"> </span><span class="kn">import</span> <span class="n">QiskitRuntimeService</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qoqo</span><span class="w"> </span><span class="kn">import</span> <span class="n">measurements</span>  <span class="c1"># type:ignore</span>
 
-<span class="kn">from</span> <span class="nn">..models</span> <span class="kn">import</span> <span class="n">Registers</span><span class="p">,</span> <span class="n">RegistersWithLengths</span>
-<span class="kn">from</span> <span class="nn">.post_processing</span> <span class="kn">import</span> <span class="n">_transform_job_result</span>
-<span class="kn">from</span> <span class="nn">.utils</span> <span class="kn">import</span> <span class="n">is_valid_uuid4</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..models</span><span class="w"> </span><span class="kn">import</span> <span class="n">Registers</span><span class="p">,</span> <span class="n">RegistersWithLengths</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.post_processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">_transform_job_result</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">is_valid_uuid4</span>
 
 
 <div class="viewcode-block" id="QueuedCircuitRun">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun">[docs]</a>
-<span class="k">class</span> <span class="nc">QueuedCircuitRun</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QueuedCircuitRun</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Queued Result of the circuit.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="QueuedCircuitRun.__init__">
 <a class="viewcode-back" href="../../../generated/generated/qoqo_qiskit.QueuedCircuitRun.html#qoqo_qiskit.QueuedCircuitRun.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">job</span><span class="p">:</span> <span class="n">Job</span><span class="p">,</span>
         <span class="n">memory</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
@@ -154,7 +154,7 @@
 
 <div class="viewcode-block" id="QueuedCircuitRun.to_json">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun.to_json">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert self to a JSON string.</span>
 
 <span class="sd">        Returns:</span>
@@ -175,7 +175,7 @@
 <div class="viewcode-block" id="QueuedCircuitRun.from_json">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun.from_json">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedCircuitRun</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_json</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedCircuitRun</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a JSON string to an instance of QueuedCircuitRun.</span>
 
 <span class="sd">        Args:</span>
@@ -212,7 +212,7 @@
 
 <div class="viewcode-block" id="QueuedCircuitRun.poll_result">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedCircuitRun.poll_result">[docs]</a>
-    <span class="k">def</span> <span class="nf">poll_result</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">poll_result</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
         <span class="n">Tuple</span><span class="p">[</span>
@@ -263,12 +263,12 @@
 
 <div class="viewcode-block" id="QueuedProgramRun">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun">[docs]</a>
-<span class="k">class</span> <span class="nc">QueuedProgramRun</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">QueuedProgramRun</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Queued Result of the measurement.&quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="QueuedProgramRun.__init__">
 <a class="viewcode-back" href="../../../generated/generated/qoqo_qiskit.QueuedProgramRun.html#qoqo_qiskit.QueuedProgramRun.__init__">[docs]</a>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">queued_circuits</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedCircuitRun</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">measurement</span><span class="p">:</span> <span class="n">Any</span><span class="p">,</span> <span class="n">queued_circuits</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">QueuedCircuitRun</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialise the QueuedProgramRun class.</span>
 
 <span class="sd">        Args:</span>
@@ -314,7 +314,7 @@
 
 <div class="viewcode-block" id="QueuedProgramRun.to_json">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.to_json">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_json</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert self to a JSON string.</span>
 
 <span class="sd">        Returns:</span>
@@ -351,7 +351,7 @@
 <div class="viewcode-block" id="QueuedProgramRun.from_json">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.from_json">[docs]</a>
     <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">from_json</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedProgramRun</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">from_json</span><span class="p">(</span><span class="n">string</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QueuedProgramRun</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;Convert a JSON string to an instance of QueuedProgramRun.</span>
 
 <span class="sd">        Args:</span>
@@ -409,7 +409,7 @@
 
 <div class="viewcode-block" id="QueuedProgramRun.poll_result">
 <a class="viewcode-back" href="../../../generated/qoqo_qiskit.html#qoqo_qiskit.QueuedProgramRun.poll_result">[docs]</a>
-    <span class="k">def</span> <span class="nf">poll_result</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">poll_result</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span>
         <span class="n">Union</span><span class="p">[</span>

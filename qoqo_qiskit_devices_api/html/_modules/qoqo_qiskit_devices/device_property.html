@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.8.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+  <title>qoqo_qiskit_devices.device_property &mdash; qoqo_qiskit_devices 0.9.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=c5112a0f"></script>
+      <script src="../../_static/documentation_options.js?v=269f141a"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -71,7 +71,7 @@
   <h1>Source code for qoqo_qiskit_devices.device_property</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Device information-gathering routines.&quot;&quot;&quot;</span>
 
-<span class="c1"># Copyright © 2023 HQS Quantum Simulations GmbH. All Rights Reserved.</span>
+<span class="c1"># Copyright © 2023-2025 HQS Quantum Simulations GmbH. All Rights Reserved.</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
 <span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
@@ -83,18 +83,18 @@
 <span class="c1"># or implied. See the License for the specific language governing permissions and limitations under</span>
 <span class="c1"># the License.</span>
 
-<span class="kn">import</span> <span class="nn">types</span>
-<span class="kn">import</span> <span class="nn">warnings</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">types</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">warnings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
 
-<span class="kn">from</span> <span class="nn">qiskit_ibm_runtime</span> <span class="kn">import</span> <span class="n">QiskitRuntimeService</span>
-<span class="kn">from</span> <span class="nn">qoqo</span> <span class="kn">import</span> <span class="n">noise_models</span>
-<span class="kn">from</span> <span class="nn">struqture_py</span> <span class="kn">import</span> <span class="n">spins</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit_ibm_runtime</span><span class="w"> </span><span class="kn">import</span> <span class="n">QiskitRuntimeService</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qoqo</span><span class="w"> </span><span class="kn">import</span> <span class="n">noise_models</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">struqture_py</span><span class="w"> </span><span class="kn">import</span> <span class="n">spins</span>
 
-<span class="kn">from</span> <span class="nn">.mocked_properties</span> <span class="kn">import</span> <span class="n">MockedProperties</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.mocked_properties</span><span class="w"> </span><span class="kn">import</span> <span class="n">MockedProperties</span>
 
 
-<span class="k">def</span> <span class="nf">_qiskit_gate_equivalent</span><span class="p">(</span><span class="n">gate</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">_qiskit_gate_equivalent</span><span class="p">(</span><span class="n">gate</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Outputs qiskit equivalent of a Qoqo gate name.</span>
 
 <span class="sd">    Args:</span>
@@ -117,7 +117,7 @@
 
 <div class="viewcode-block" id="set_qiskit_device_information">
 <a class="viewcode-back" href="../../generated/qoqo_qiskit_devices.html#qoqo_qiskit_devices.set_qiskit_device_information">[docs]</a>
-<span class="k">def</span> <span class="nf">set_qiskit_device_information</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">set_qiskit_device_information</span><span class="p">(</span>
     <span class="n">device</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">,</span> <span class="n">get_mocked_information</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Sets a qoqo_qiskit_devices.ibm_devices instance noise info.</span>
@@ -176,7 +176,7 @@
 
 <div class="viewcode-block" id="get_decoherence_on_gate_model">
 <a class="viewcode-back" href="../../generated/qoqo_qiskit_devices.html#qoqo_qiskit_devices.get_decoherence_on_gate_model">[docs]</a>
-<span class="k">def</span> <span class="nf">get_decoherence_on_gate_model</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_decoherence_on_gate_model</span><span class="p">(</span>
     <span class="n">device</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">,</span> <span class="n">get_mocked_information</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">noise_models</span><span class="o">.</span><span class="n">DecoherenceOnGateModel</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Gets the DecoherenceOnGateModel qoqo noise model of an IBM device.</span>
@@ -277,7 +277,7 @@
 
 <div class="viewcode-block" id="get_noise_models">
 <a class="viewcode-back" href="../../generated/qoqo_qiskit_devices.html#qoqo_qiskit_devices.get_noise_models">[docs]</a>
-<span class="k">def</span> <span class="nf">get_noise_models</span><span class="p">(</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_noise_models</span><span class="p">(</span>
     <span class="n">device</span><span class="p">:</span> <span class="n">types</span><span class="o">.</span><span class="n">ModuleType</span><span class="p">,</span> <span class="n">get_mocked_information</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span>
     <span class="n">noise_models</span><span class="o">.</span><span class="n">ContinuousDecoherenceModel</span><span class="p">,</span> <span class="n">noise_models</span><span class="o">.</span><span class="n">DecoherenceOnGateModel</span>

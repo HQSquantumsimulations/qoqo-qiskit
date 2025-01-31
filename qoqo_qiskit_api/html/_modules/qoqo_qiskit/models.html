@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.models &mdash; qoqo_qiskit 0.8.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+  <title>qoqo_qiskit.models &mdash; qoqo_qiskit 0.9.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=c5112a0f"></script>
+      <script src="../../_static/documentation_options.js?v=269f141a"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -69,7 +69,7 @@
            <div itemprop="articleBody">
              
   <h1>Source code for qoqo_qiskit.models</h1><div class="highlight"><pre>
-<span></span><span class="c1"># Copyright © 2024 HQS Quantum Simulations GmbH.</span>
+<span></span><span class="c1"># Copyright © 2024-2025 HQS Quantum Simulations GmbH.</span>
 <span class="c1">#</span>
 <span class="c1"># Licensed under the Apache License, Version 2.0 (the &quot;License&quot;); you may not use this file except</span>
 <span class="c1"># in compliance with the License. You may obtain a copy of the License at</span>
@@ -82,14 +82,14 @@
 <span class="c1"># the License.</span>
 <span class="sd">&quot;&quot;&quot;Qoqo-qiskit dataclasses.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">astuple</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span><span class="p">,</span> <span class="n">Tuple</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span><span class="p">,</span> <span class="n">astuple</span>
 
 
 <div class="viewcode-block" id="Registers">
 <a class="viewcode-back" href="../../generated/qoqo_qiskit.html#qoqo_qiskit.Registers">[docs]</a>
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">Registers</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Registers</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Registers.</span>
 
 <span class="sd">    The registers are used to store classical information during the execution of a</span>
@@ -107,7 +107,7 @@
 <div class="viewcode-block" id="RegistersWithLengths">
 <a class="viewcode-back" href="../../generated/qoqo_qiskit.html#qoqo_qiskit.RegistersWithLengths">[docs]</a>
 <span class="nd">@dataclass</span>
-<span class="k">class</span> <span class="nc">RegistersWithLengths</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">RegistersWithLengths</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Registers, with classical registers lengths.</span>
 
 <span class="sd">    The registers are used to store classical information during the execution of a</span>
@@ -126,7 +126,7 @@
 
 <div class="viewcode-block" id="RegistersWithLengths.to_flat_tuple">
 <a class="viewcode-back" href="../../generated/qoqo_qiskit.html#qoqo_qiskit.RegistersWithLengths.to_flat_tuple">[docs]</a>
-    <span class="k">def</span> <span class="nf">to_flat_tuple</span><span class="p">(</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">to_flat_tuple</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span>
         <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">],</span>
