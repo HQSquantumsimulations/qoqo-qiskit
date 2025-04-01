@@ -5,14 +5,14 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.9.0 documentation</title>
+  <title>qoqo_qiskit.backend.backend &mdash; qoqo_qiskit 0.10.0 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
 
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=269f141a"></script>
+      <script src="../../../_static/documentation_options.js?v=572de344"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
@@ -88,6 +88,7 @@
 <span class="kn">from</span><span class="w"> </span><span class="nn">qiskit</span><span class="w"> </span><span class="kn">import</span> <span class="n">QuantumCircuit</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.providers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Backend</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qiskit.providers.job</span><span class="w"> </span><span class="kn">import</span> <span class="n">Job</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qiskit_ibm_runtime</span><span class="w"> </span><span class="kn">import</span> <span class="n">Sampler</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qiskit_aer</span><span class="w"> </span><span class="kn">import</span> <span class="n">AerSimulator</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qoqo</span><span class="w"> </span><span class="kn">import</span> <span class="n">Circuit</span><span class="p">,</span> <span class="n">QuantumProgram</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">qoqo.measurements</span><span class="w"> </span><span class="kn">import</span> <span class="n">ClassicalRegister</span>  <span class="c1"># type:ignore</span>
@@ -119,6 +120,7 @@
 <span class="sd">            memory (bool): Whether the output will return the actual single shots instead</span>
 <span class="sd">                           of an equivalent sequence taken from a result summary.</span>
 <span class="sd">            compilation (bool): Whether the qiskit `compiler` should be used instead of `run`.</span>
+<span class="sd">                (DEPRECATED)</span>
 
 <span class="sd">        Raises:</span>
 <span class="sd">            TypeError: the input is not a valid Qiskit Backend instance.</span>
@@ -148,7 +150,7 @@
 
         <span class="p">(</span><span class="n">shots</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">)</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_handle_simulation_options</span><span class="p">(</span><span class="n">run_options</span><span class="p">,</span> <span class="n">compiled_circuit</span><span class="p">)</span>
 
-        <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_execution</span><span class="p">(</span><span class="n">compiled_circuit</span><span class="p">,</span> <span class="n">shots</span><span class="p">)</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_execution</span><span class="p">([</span><span class="n">compiled_circuit</span><span class="p">],</span> <span class="n">shots</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">)</span>
 
         <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">sim_type</span><span class="p">,</span> <span class="n">output_registers</span><span class="p">,</span> <span class="n">input_bit_circuit</span><span class="p">)</span>
 
@@ -194,9 +196,9 @@
             <span class="n">input_bit_circuits_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">input_bit_circuit</span><span class="p">)</span>
             <span class="n">output_registers_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output_registers</span><span class="p">)</span>
 
-        <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_execution</span><span class="p">(</span><span class="n">compiled_circuits_list</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">shots_list</span><span class="p">))</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_job_execution</span><span class="p">(</span><span class="n">compiled_circuits_list</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">shots_list</span><span class="p">),</span> <span class="n">sim_type_list</span><span class="p">)</span>
 
-        <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="nb">str</span><span class="p">,</span> <span class="n">sim_type_list</span><span class="p">),</span> <span class="n">output_registers_list</span><span class="p">,</span> <span class="n">input_bit_circuits_list</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">job</span><span class="p">,</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">sim_type_list</span><span class="p">),</span> <span class="n">output_registers_list</span><span class="p">,</span> <span class="n">input_bit_circuits_list</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_set_up_registers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -212,13 +214,13 @@
             <span class="n">output_registers</span><span class="o">.</span><span class="n">float_regs_lengths</span><span class="p">[</span><span class="n">float_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">float_def</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">float_def</span><span class="o">.</span><span class="n">is_output</span><span class="p">():</span>
                 <span class="n">output_registers</span><span class="o">.</span><span class="n">registers</span><span class="o">.</span><span class="n">float_register_dict</span><span class="p">[</span><span class="n">float_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
-                    <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="p">[]</span>
+                    <span class="s2">&quot;List[List[float]]&quot;</span><span class="p">,</span> <span class="p">[]</span>
                 <span class="p">)</span>
         <span class="k">for</span> <span class="n">complex_def</span> <span class="ow">in</span> <span class="n">circuit</span><span class="o">.</span><span class="n">filter_by_tag</span><span class="p">(</span><span class="s2">&quot;DefinitionComplex&quot;</span><span class="p">):</span>
             <span class="n">output_registers</span><span class="o">.</span><span class="n">complex_regs_lengths</span><span class="p">[</span><span class="n">complex_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">complex_def</span><span class="o">.</span><span class="n">length</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">complex_def</span><span class="o">.</span><span class="n">is_output</span><span class="p">():</span>
                 <span class="n">output_registers</span><span class="o">.</span><span class="n">registers</span><span class="o">.</span><span class="n">complex_register_dict</span><span class="p">[</span><span class="n">complex_def</span><span class="o">.</span><span class="n">name</span><span class="p">()]</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span>
-                    <span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">complex</span><span class="p">]],</span> <span class="p">[]</span>
+                    <span class="s2">&quot;List[List[complex]]&quot;</span><span class="p">,</span> <span class="p">[]</span>
                 <span class="p">)</span>
         <span class="k">return</span> <span class="n">output_registers</span>
 
@@ -296,10 +298,11 @@
         <span class="n">custom_shots</span> <span class="o">=</span> <span class="mi">0</span>
         <span class="n">sim_type</span> <span class="o">=</span> <span class="s2">&quot;automatic&quot;</span>
         <span class="k">if</span> <span class="n">run_options</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaGetStateVector&quot;</span><span class="p">]:</span>
-            <span class="n">compiled_circuit</span><span class="o">.</span><span class="n">save_statevector</span><span class="p">()</span>
+            <span class="c1"># compiled_circuit.save_statevector() # noqa: ERA001</span>
+            <span class="n">compiled_circuit</span><span class="o">.</span><span class="n">measure_all</span><span class="p">()</span>
             <span class="n">sim_type</span> <span class="o">=</span> <span class="s2">&quot;statevector&quot;</span>
         <span class="k">elif</span> <span class="n">run_options</span><span class="p">[</span><span class="s2">&quot;SimulationInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaGetDensityMatrix&quot;</span><span class="p">]:</span>
-            <span class="n">compiled_circuit</span><span class="o">.</span><span class="n">save_density_matrix</span><span class="p">()</span>
+            <span class="c1"># compiled_circuit.save_density_matrix() # noqa: ERA001</span>
             <span class="n">sim_type</span> <span class="o">=</span> <span class="s2">&quot;density_matrix&quot;</span>
         <span class="k">if</span> <span class="s2">&quot;PragmaRepeatedMeasurement&quot;</span> <span class="ow">in</span> <span class="n">run_options</span><span class="p">[</span><span class="s2">&quot;MeasurementInfo&quot;</span><span class="p">]:</span>
             <span class="k">for</span> <span class="n">el</span> <span class="ow">in</span> <span class="n">run_options</span><span class="p">[</span><span class="s2">&quot;MeasurementInfo&quot;</span><span class="p">][</span><span class="s2">&quot;PragmaRepeatedMeasurement&quot;</span><span class="p">]:</span>
@@ -314,11 +317,12 @@
         <span class="k">return</span> <span class="n">shots</span><span class="p">,</span> <span class="n">sim_type</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">_job_execution</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span>
-        <span class="n">input_to_send</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">Circuit</span><span class="p">,</span> <span class="n">List</span><span class="p">[</span><span class="n">Circuit</span><span class="p">]],</span>
-        <span class="n">shots</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">input_to_send</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="n">Circuit</span><span class="p">],</span> <span class="n">shots</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">_sim_type</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Job</span><span class="p">:</span>
-        <span class="n">job</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">qiskit_backend</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_to_send</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">,</span> <span class="n">memory</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">)</span>
+        <span class="c1"># job =</span>
+        <span class="c1"># self.qiskit_backend.run(input_to_send, shots=shots, memory=self.memory) # noqa: ERA001</span>
+        <span class="n">sampler</span> <span class="o">=</span> <span class="n">Sampler</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">qiskit_backend</span><span class="p">)</span>
+        <span class="n">job</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">input_to_send</span><span class="p">,</span> <span class="n">shots</span><span class="o">=</span><span class="n">shots</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">job</span>
 
 <div class="viewcode-block" id="QoqoQiskitBackend.run_circuit">
@@ -678,7 +682,7 @@
                 <span class="p">)</span>
             <span class="n">queued_runs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">run_measurement_queued</span><span class="p">(</span><span class="n">program</span><span class="o">.</span><span class="n">measurement</span><span class="p">()))</span>
         <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">params_values</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
-            <span class="n">params_values</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="n">List</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">float</span><span class="p">]],</span> <span class="n">params_values</span><span class="p">)</span>
+            <span class="n">params_values</span> <span class="o">=</span> <span class="n">cast</span><span class="p">(</span><span class="s2">&quot;List[List[float]]&quot;</span><span class="p">,</span> <span class="n">params_values</span><span class="p">)</span>
             <span class="k">for</span> <span class="n">params</span> <span class="ow">in</span> <span class="n">params_values</span><span class="p">:</span>
                 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">params</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">input_parameter_names</span><span class="p">):</span>
                     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
