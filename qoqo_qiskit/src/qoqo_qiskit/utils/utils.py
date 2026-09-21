@@ -12,11 +12,11 @@
 """Qoqo-qiskit utils modules for compatibility purposes."""
 
 import re
+import numpy as np
 
 from qoqo_qiskit.interface import to_qiskit_circuit
-
+from itertools import permutations
 from typing import Dict, List, Optional, Tuple
-import numpy as np
 from qiskit import ClassicalRegister, QuantumCircuit
 from qiskit.quantum_info.operators import SparsePauliOp
 from qiskit_aer.noise import NoiseModel
@@ -500,6 +500,34 @@ def get_qoqo_noise_models_from_aer_noise_model(
     return model
 
 
+def _add_op(device: devices.GenericDevice, qubits: tuple, gate_time: float, name: str) -> None:
+    if len(qubits) == 1:
+        device.set_single_qubit_gate_time(
+            name,
+            qubits[0],
+            gate_time,
+        )
+    elif len(qubits) == 2:
+        device.set_two_qubit_gate_time(
+            name,
+            qubits[0],
+            qubits[1],
+            gate_time,
+        )
+        device.set_two_qubit_gate_time(
+            name,
+            qubits[1],
+            qubits[0],
+            gate_time,
+        )
+    else:
+        device.set_multi_qubit_gate_time(
+            name,
+            qubits,
+            gate_time,
+        )
+
+
 def qoqo_device_from_qiskit_backend(backend) -> devices.GenericDevice:
     """Create a qoqo GenericDevice from a Qiskit BackendV2-like backend.
 
@@ -510,6 +538,7 @@ def qoqo_device_from_qiskit_backend(backend) -> devices.GenericDevice:
         The qoqo device
     """
     target = backend.target
+    number_qubits = target.num_qubits
     device = devices.GenericDevice(backend.num_qubits)
     for qiskit_name, instruction_properties in target.items():
         qoqo_name = QISKIT_TO_QOQO.get(qiskit_name)
@@ -525,30 +554,19 @@ def qoqo_device_from_qiskit_backend(backend) -> devices.GenericDevice:
                 else 1.0
             )
 
-            if len(qubits) == 1:
-                device.set_single_qubit_gate_time(
-                    qoqo_name,
-                    qubits[0],
-                    gate_time,
-                )
-            elif len(qubits) == 2:
-                device.set_two_qubit_gate_time(
-                    qoqo_name,
-                    qubits[0],
-                    qubits[1],
-                    gate_time,
-                )
-                device.set_two_qubit_gate_time(
-                    qoqo_name,
-                    qubits[1],
-                    qubits[0],
-                    gate_time,
-                )
+            if qubits is None:
+                match target.operation_from_name(qiskit_name).num_qubits:
+                    case 1:
+                        for op_qubits in ((qubit,) for qubit in range(number_qubits)):
+                            _add_op(device, op_qubits, gate_time, qoqo_name)
+
+                    case 2:
+                        for op_qubits in permutations(range(number_qubits), 2):
+                            _add_op(device, op_qubits, gate_time, qoqo_name)
+                    case _:
+                        continue
+
             else:
-                device.set_multi_qubit_gate_time(
-                    qoqo_name,
-                    qubits,
-                    gate_time,
-                )
+                _add_op(device, qubits, gate_time, qoqo_name)
 
     return device
