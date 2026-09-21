@@ -22,7 +22,7 @@ from qiskit.quantum_info.operators import SparsePauliOp
 from qiskit_aer.noise import NoiseModel
 from qoqo.noise_models import DecoherenceOnGateModel
 from qiskit_aer.primitives import SamplerV2
-from qoqo import Circuit
+from qoqo import Circuit, devices
 from struqture_py.spins import (
     PlusMinusLindbladNoiseOperator,
     PlusMinusProduct,
@@ -427,6 +427,26 @@ def _z_label_from_pauli_product(
     return "".join(label)
 
 
+QISKIT_TO_QOQO = {
+    "id": "Identity",
+    "x": "PauliX",
+    "y": "PauliY",
+    "z": "PauliZ",
+    "h": "Hadamard",
+    "rx": "RotateX",
+    "ry": "RotateY",
+    "rz": "RotateZ",
+    "r": "RotateXY",
+    "sx": "SqrtPauliX",
+    "sxdg": "InvSqrtPauliX",
+    "p": "PhaseShift",
+    "cx": "CNOT",
+    "cz": "ControlledPauliZ",
+    "crx": "ControlledRotateX",
+    "swap": "SWAP",
+}
+
+
 def get_qoqo_noise_models_from_aer_noise_model(
     noisemodel: NoiseModel,
 ) -> DecoherenceOnGateModel:
@@ -434,24 +454,10 @@ def get_qoqo_noise_models_from_aer_noise_model(
 
     Assumptions:
     - only handles entries of type "qerror" which contains all the errors related to quantum gates
-    - treats the error as a simple Pauli-like gate noise
+        Other errors are ignored.
+    - treats the error as a simple Pauli-like gate noise with equal effects on x, y and z
     - uses p = sum(non-identity probabilities) as effective noise strength
     """
-
-    def _map_gate_name(gate: str) -> str:
-        mapping = {
-            "x": "PauliX",
-            "y": "PauliY",
-            "z": "PauliZ",
-            "rx": "RotateX",
-            "ry": "RotateY",
-            "rz": "RotateZ",
-            "sx": "SqrtPauliX",
-            "cx": "CNOT",
-            "id": "Identity",
-            "crx": "ControlledRotateX",
-        }
-        return mapping.get(gate, gate)
 
     model = DecoherenceOnGateModel()
     noise_dict = noisemodel.to_dict(serializable=True)
@@ -462,7 +468,7 @@ def get_qoqo_noise_models_from_aer_noise_model(
         if "gate_qubits" not in error:
             continue
 
-        gate = _map_gate_name(error["operations"][0])
+        gate = QISKIT_TO_QOQO.get(error["operations"][0], error["operations"][0])
         qubits = tuple(error["gate_qubits"][0])
 
         p = 0.0
@@ -492,3 +498,57 @@ def get_qoqo_noise_models_from_aer_noise_model(
             model = model.set_multi_qubit_gate_error(gate, qubits, lindblad_noise)
 
     return model
+
+
+def qoqo_device_from_qiskit_backend(backend) -> devices.GenericDevice:
+    """Create a qoqo GenericDevice from a Qiskit BackendV2-like backend.
+
+    Args:
+        backend: The qiskit backend
+
+    Returns:
+        The qoqo device
+    """
+    target = backend.target
+    device = devices.GenericDevice(backend.num_qubits)
+    for qiskit_name, instruction_properties in target.items():
+        qoqo_name = QISKIT_TO_QOQO.get(qiskit_name)
+        if qoqo_name is None:
+            continue
+
+        instruction_properties = target[qiskit_name]
+
+        for qubits, properties in instruction_properties.items():
+            gate_time = (
+                properties.duration
+                if properties is not None and properties.duration is not None
+                else 1.0
+            )
+
+            if len(qubits) == 1:
+                device.set_single_qubit_gate_time(
+                    qoqo_name,
+                    qubits[0],
+                    gate_time,
+                )
+            elif len(qubits) == 2:
+                device.set_two_qubit_gate_time(
+                    qoqo_name,
+                    qubits[0],
+                    qubits[1],
+                    gate_time,
+                )
+                device.set_two_qubit_gate_time(
+                    qoqo_name,
+                    qubits[1],
+                    qubits[0],
+                    gate_time,
+                )
+            else:
+                device.set_multi_qubit_gate_time(
+                    qoqo_name,
+                    qubits,
+                    gate_time,
+                )
+
+    return device

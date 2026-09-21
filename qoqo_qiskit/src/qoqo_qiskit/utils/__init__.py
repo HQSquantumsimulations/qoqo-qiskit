@@ -14,6 +14,7 @@
 from qoqo_qiskit.utils.utils import (
     struqture_hamiltonian_to_qiskit_op,
     get_qoqo_noise_models_from_aer_noise_model,
+    qoqo_device_from_qiskit_backend,
     _basis_rotation_from_z_basis,
     _collect_pauli_products,
     _single_measurement_circuit,
@@ -35,4 +36,5 @@ __all__ = [
     "measure_pauli_operator",
     "run_pauli_operator",
     "struqture_hamiltonian_to_qiskit_op",
+    "qoqo_device_from_qiskit_backend",
 ]
