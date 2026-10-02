@@ -12,16 +12,24 @@
 """Qoqo-qiskit utils modules for compatibility purposes."""
 
 import re
-from typing import Dict, List, Optional, Tuple
-
 import numpy as np
-from qiskit import ClassicalRegister, QuantumCircuit
-from qiskit.quantum_info.operators import SparsePauliOp
-from qiskit_aer.primitives import SamplerV2
-from qoqo import Circuit
-from struqture_py.spins import PauliHamiltonian, PauliOperator, PauliProduct  # type: ignore
 
 from qoqo_qiskit.interface import to_qiskit_circuit
+from itertools import permutations
+from typing import Any, Dict, List, Optional, Tuple
+from qiskit import ClassicalRegister, QuantumCircuit
+from qiskit.quantum_info.operators import SparsePauliOp
+from qiskit_aer.noise import NoiseModel
+from qoqo.noise_models import DecoherenceOnGateModel
+from qiskit_aer.primitives import SamplerV2
+from qoqo import Circuit, devices
+from struqture_py.spins import (
+    PlusMinusLindbladNoiseOperator,
+    PlusMinusProduct,
+    PauliHamiltonian,
+    PauliOperator,
+    PauliProduct,
+)  # type: ignore
 
 _TOKEN_RE = re.compile(r"(\d+)([XYZ])")
 
@@ -417,3 +425,146 @@ def _z_label_from_pauli_product(
         label[n - 1 - qubit] = "Z"
 
     return "".join(label)
+
+
+QISKIT_TO_QOQO = {
+    "id": "Identity",
+    "x": "PauliX",
+    "y": "PauliY",
+    "z": "PauliZ",
+    "h": "Hadamard",
+    "rx": "RotateX",
+    "ry": "RotateY",
+    "rz": "RotateZ",
+    "r": "RotateXY",
+    "sx": "SqrtPauliX",
+    "sxdg": "InvSqrtPauliX",
+    "p": "PhaseShift",
+    "cx": "CNOT",
+    "cz": "ControlledPauliZ",
+    "crx": "ControlledRotateX",
+    "swap": "SWAP",
+}
+
+
+def get_qoqo_noise_models_from_aer_noise_model(
+    noisemodel: NoiseModel,
+) -> DecoherenceOnGateModel:
+    """Convert simple Aer qerror entries into a qoqo DecoherenceOnGateModel.
+
+    Assumptions:
+    - only handles entries of type "qerror" which contains all the errors related to quantum gates
+        Other errors are ignored.
+    - treats the error as a simple Pauli-like gate noise with equal effects on x, y and z
+    - uses p = sum(non-identity probabilities) as effective noise strength
+    """
+
+    model = DecoherenceOnGateModel()
+    noise_dict = noisemodel.to_dict(serializable=True)
+
+    for error in noise_dict["errors"]:
+        if error["type"] != "qerror":
+            continue
+        if "gate_qubits" not in error:
+            continue
+
+        gate = QISKIT_TO_QOQO.get(error["operations"][0], error["operations"][0])
+        qubits = tuple(error["gate_qubits"][0])
+
+        p = 0.0
+        for instruction_list, prob in zip(
+            error["instructions"], error["probabilities"], strict=False
+        ):
+            inst = instruction_list[0]
+
+            if inst["name"] == "id" or (
+                inst["name"] == "pauli" and set(inst["params"][0]) == {"I"}
+            ):
+                continue
+
+            p += float(prob)
+
+        lindblad_noise = PlusMinusLindbladNoiseOperator()
+        for qubit in qubits:
+            for op, factor in [("+", 0.5), ("-", 0.5), ("Z", 0.25)]:
+                dp = PlusMinusProduct().from_string(f"{qubit}{op}")
+                lindblad_noise.add_operator_product((dp, dp), factor * p)
+
+        if len(qubits) == 1:
+            model = model.set_single_qubit_gate_error(gate, qubits[0], lindblad_noise)
+        elif len(qubits) == 2:
+            model = model.set_two_qubit_gate_error(gate, qubits[0], qubits[1], lindblad_noise)
+        else:
+            model = model.set_multi_qubit_gate_error(gate, qubits, lindblad_noise)
+
+    return model
+
+
+def _add_op(device: devices.GenericDevice, qubits: tuple, gate_time: float, name: str) -> None:
+    if len(qubits) == 1:
+        device.set_single_qubit_gate_time(
+            name,
+            qubits[0],
+            gate_time,
+        )
+    elif len(qubits) == 2:
+        device.set_two_qubit_gate_time(
+            name,
+            qubits[0],
+            qubits[1],
+            gate_time,
+        )
+        device.set_two_qubit_gate_time(
+            name,
+            qubits[1],
+            qubits[0],
+            gate_time,
+        )
+    else:
+        device.set_multi_qubit_gate_time(
+            name,
+            qubits,
+            gate_time,
+        )
+
+
+def qoqo_device_from_qiskit_backend(backend: Any) -> devices.GenericDevice:
+    """Create a qoqo GenericDevice from a Qiskit BackendV2-like backend.
+
+    Args:
+        backend: The qiskit backend
+
+    Returns:
+        The qoqo device
+    """
+    target = backend.target
+    number_qubits = target.num_qubits
+    device = devices.GenericDevice(backend.num_qubits)
+    for qiskit_name, instruction_properties in target.items():
+        qoqo_name = QISKIT_TO_QOQO.get(qiskit_name)
+        if qoqo_name is None:
+            continue
+
+        for qubits, properties in instruction_properties.items():
+            gate_time = (
+                properties.duration
+                if properties is not None and properties.duration is not None
+                else 1.0
+            )
+
+            if qubits is None:
+                match target.operation_from_name(qiskit_name).num_qubits:
+                    case 1:
+                        for op_qubit in ((qubit,) for qubit in range(number_qubits)):
+                            _add_op(device, op_qubit, gate_time, qoqo_name)
+
+                    case 2:
+                        for op_qubits in permutations(range(number_qubits), 2):
+                            _add_op(device, op_qubits, gate_time, qoqo_name)
+                    case _:
+                        continue
+
+            else:
+                _add_op(device, qubits, gate_time, qoqo_name)
+
+    return device
