@@ -37,5 +37,4 @@ __all__ = [
     "qoqo_device_from_qiskit_backend",
     "run_pauli_operator",
     "struqture_hamiltonian_to_qiskit_op",
-
 ]
