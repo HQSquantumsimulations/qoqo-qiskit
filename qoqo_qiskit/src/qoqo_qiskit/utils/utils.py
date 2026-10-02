@@ -545,8 +545,6 @@ def qoqo_device_from_qiskit_backend(backend: Any) -> devices.GenericDevice:
         if qoqo_name is None:
             continue
 
-        instruction_properties = target[qiskit_name]
-
         for qubits, properties in instruction_properties.items():
             gate_time = (
                 properties.duration
@@ -557,8 +555,8 @@ def qoqo_device_from_qiskit_backend(backend: Any) -> devices.GenericDevice:
             if qubits is None:
                 match target.operation_from_name(qiskit_name).num_qubits:
                     case 1:
-                        for op_qubits in ((qubit,) for qubit in range(number_qubits)):
-                            _add_op(device, op_qubits, gate_time, qoqo_name)
+                        for op_qubit in ((qubit,) for qubit in range(number_qubits)):
+                            _add_op(device, op_qubit, gate_time, qoqo_name)
 
                     case 2:
                         for op_qubits in permutations(range(number_qubits), 2):
