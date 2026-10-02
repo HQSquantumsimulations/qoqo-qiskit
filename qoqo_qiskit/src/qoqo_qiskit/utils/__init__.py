@@ -34,7 +34,8 @@ __all__ = [
     "_z_label_from_pauli_product",
     "get_qoqo_noise_models_from_aer_noise_model",
     "measure_pauli_operator",
+    "qoqo_device_from_qiskit_backend",
     "run_pauli_operator",
     "struqture_hamiltonian_to_qiskit_op",
-    "qoqo_device_from_qiskit_backend",
+
 ]

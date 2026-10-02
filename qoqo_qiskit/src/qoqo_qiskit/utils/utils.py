@@ -16,7 +16,7 @@ import numpy as np
 
 from qoqo_qiskit.interface import to_qiskit_circuit
 from itertools import permutations
-from typing import Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from qiskit import ClassicalRegister, QuantumCircuit
 from qiskit.quantum_info.operators import SparsePauliOp
 from qiskit_aer.noise import NoiseModel
@@ -528,7 +528,7 @@ def _add_op(device: devices.GenericDevice, qubits: tuple, gate_time: float, name
         )
 
 
-def qoqo_device_from_qiskit_backend(backend) -> devices.GenericDevice:
+def qoqo_device_from_qiskit_backend(backend: Any) -> devices.GenericDevice:
     """Create a qoqo GenericDevice from a Qiskit BackendV2-like backend.
 
     Args:
